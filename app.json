@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/bus/detail",
+    "pages/stop/detail",
+    "pages/components/bus-item/index",
+    "pages/components/first-buses/index",
+    "pages/components/stop-item/index",
+    "pages/index/search",
+    "pages/my/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "北京公交出行",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ffffff",
+    "enablePullDownRefresh": true,
+    "navigationStyle": "default"
+  },
+  "tabBar": {
+    "color": "#515151",
+    "selectedColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "附近",
+        "iconPath": "res/coordinates.png",
+        "selectedIconPath": "res/coordinates_fill.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "收藏",
+        "iconPath": "res/collection.png",
+        "selectedIconPath": "res/collection_fill.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我",
+        "iconPath": "res/mine.png",
+        "selectedIconPath": "res/mine_fill.png"
+      }
+    ]
+  }
+}

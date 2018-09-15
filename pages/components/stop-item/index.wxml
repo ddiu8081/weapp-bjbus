@@ -1,0 +1,13 @@
+<!--pages/components/stop-item/index.wxml-->
+<navigator url="../stop/detail?name={{info.name}}&location={{info.location}}&buses={{info.buses.str}}" hover-stop-propagation="true" class="stop-card i-class">
+  <view class="stop-card-header">
+    <view class="stop-name">
+      {{info.name}}
+      <span class="stop-buses-count">·{{info.buses.count}}条</span>
+    </view>
+    <view class="stop-distance">{{info.distance}}m</view>
+  </view>
+  <view class="stop-card-content">
+    <slot></slot>
+  </view>
+</navigator>

@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="header">
+  <navigator url="search" class="search-bar">
+    <text>搜索位置、线路、站名</text>
+    <i-icon type="search" size="20" color="#80848f"/>
+  </navigator>
+  <!-- <image src="/res/loc-search.png" style="height:40rpx;width:40rpx;margin-left:20rpx;"></image> -->
+</view>
+<view class="container container-mt" wx:if="{{props.data.location.isSet}}">
+  <view class="location-bar">
+    <i-icon type="coordinates_fill" size="18" color="#fff"/>
+    <text>按位置搜索：海淀区西三环中路</text>
+    <i-icon type="close" color="#fff"/>
+  </view>
+  <block wx:for="{{pois}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="name">
+    <stop-item info="{{stop_item}}" wx:if="{{stop_index == 0}}" i-class="stop-card-first">
+      <first-buses count="{{stop_item.buses.count}}" list="{{first_buses}}"></first-buses>
+    </stop-item>
+    <stop-item info="{{stop_item}}" wx:else i-class="stop-card-normal">
+      <view style="padding: 20rpx 30rpx;">
+        <span class="bus-item" wx:for="{{stop_item.buses.data}}" wx:for-index="bus_index" wx:for-item="bus_item" wx:key="*this">
+          {{bus_item}}
+        </span>
+      </view>
+      <view class="mask"></view>
+    </stop-item>
+  </block>
+</view>

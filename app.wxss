@@ -1,0 +1,43 @@
+/**app.wxss**/
+page {
+  background: #ffffff;
+  font-size: 28rpx;
+}
+
+.container {
+  background: #f3f3f3;
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+
+.container-mt {
+  margin-top: 108rpx;
+}
+
+.container-white {
+  background: #ffffff;
+}
+
+.navigator-hover {
+	background: #f9f9f9;
+}
+
+.title-square {
+  display: inline-block;
+  margin-right: 10rpx;
+  background: #FFD45A;
+  width: 14rpx;
+  height: 28rpx;
+  border-radius: 7rpx;
+}
+
+@keyframes ani-demo-spin {
+    from { transform: rotate(0deg);}
+    50%  { transform: rotate(180deg);}
+    to   { transform: rotate(360deg);}
+}
+.icon-load{
+    animation: ani-demo-spin 1s linear infinite;
+}

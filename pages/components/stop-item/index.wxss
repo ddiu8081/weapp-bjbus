@@ -1,0 +1,45 @@
+/* pages/components/stop-item/index.wxss */
+/* STOP CARD */
+
+.stop-card {
+  background: #ffffff;
+  overflow:hidden;
+  font-size: 28rpx;
+}
+
+/* STOP CARD HEADER */
+
+.stop-card-header {
+  display: flex;
+  height: 84rpx;
+  background-color: #fbfbfb;
+  padding: 0 30rpx;
+  align-items: center;
+}
+
+.stop-card-header .stop-name {
+  display: inline-block;
+  flex: 1;
+  color: #495060;
+  font-size: 32rpx;
+}
+
+.stop-card-header .stop-name .stop-buses-count {
+  display: inline-block;
+  color: #cccccc;
+  font-size: 28rpx;
+}
+
+.stop-card-header .stop-distance {
+  float: right;
+  color: #bbbec4;
+}
+
+/* STOP CARD CONTENT */
+
+.stop-card-content {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+}

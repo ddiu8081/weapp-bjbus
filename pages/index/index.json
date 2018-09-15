@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index",
+    "stop-item": "../components/stop-item/index",
+    "first-buses": "../components/first-buses/index"
+  }
+}

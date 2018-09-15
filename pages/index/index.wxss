@@ -1,0 +1,98 @@
+/* @import "../../libs/animate.wxss"; */
+.header {
+  background: #ffffff;
+  margin: 0;
+  padding: 18rpx 24rpx 22rpx;
+  display: flex;
+  align-items: center;
+  position:fixed;
+  top: 0;
+  height: 108rpx;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 999;
+  box-shadow: 0 6rpx 10rpx hsla(220,4%,58%,.1);
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  background: #f4f4f4;
+  height: 68rpx;
+  padding: 0 25rpx;
+  border-radius: 50rpx;
+  align-items: center;
+}
+
+.search-bar text {
+  flex: 1;
+  color: #cccccc;
+}
+
+.loc-bar {
+  display: flex;
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  height: 68rpx;
+  padding: 0 25rpx;
+  width: 100%;
+  border-radius: 50rpx;
+  align-items: center;
+  box-shadow: 0 1px 10px #ddd;
+
+}
+
+.loc-bar text {
+  flex: 1;
+  color: #fff;
+}
+
+/* LOCATION BAR */
+.location-bar {
+  display: flex;
+  height: 68rpx;
+  align-items: center;
+  padding: 0 30rpx;
+  font-size: 26rpx;
+  background-color: rgba(0,0,0,0.20); 
+  /* background-image: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%); */
+}
+
+.location-bar text {
+  color: #ffffff;
+  flex: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* STOP CARD */
+.stop-card-first {
+  margin-top: 0;
+  border-top: 2px solid #fed330;
+}
+
+.stop-card-normal {
+  margin: 12rpx 0;
+  border-top: 2px solid #dddddd;
+}
+
+.bus-item {
+  font-size: 24rpx;
+  margin-right: 12rpx;
+  background-color: hsla(220,4%,58%,.1);
+  display: inline-block;
+  padding: 5rpx 10rpx;
+  color: #909399;
+  border-radius: 4px;
+  box-sizing: border-box;
+  /* border: 1rpx solid hsla(220,4%,58%,.2); */
+  white-space: nowrap;
+}
+
+.mask {
+  width:100%;
+	position: absolute;
+	top:0;
+	height: 100%;
+  background-image: linear-gradient(90deg,hsla(255,0%,100%,0) 80%,#fff 100%);
+}

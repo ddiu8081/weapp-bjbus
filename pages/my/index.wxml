@@ -1,0 +1,2 @@
+<!--pages/my/index.wxml-->
+<button open-type="feedback">123</button>

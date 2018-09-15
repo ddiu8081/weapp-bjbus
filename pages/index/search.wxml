@@ -1,0 +1,17 @@
+<!--pages/index/search.wxml-->
+<view class="header">
+  <input class="search-bar" placeholder="搜索线路、站名" focus placeholder-style="color:#cccccc"/>
+</view>
+<view class="container container-mt container-white">
+  <view class="location-bar">
+    <view class="location-bar-header">
+      <view class="location-title">
+        <span class="title-square"></span>
+        <text>按位置搜索</text>
+      </view>
+      <view class="location-text" bindtap="setLocation">
+        {{location}}
+      </view>
+    </view>
+  </view>
+</view>

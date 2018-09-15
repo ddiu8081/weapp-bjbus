@@ -1,0 +1,30 @@
+<!--pages/components/bus-item/bus-item.wxml-->
+<navigator class="bus-item-card" url="../bus/detail?name={{busTime.name}}&direction={{busTime.detail.dir.id}}&stop={{first_stop}}" hover-stop-propagation="true" catchtap>
+  <view id="detail-left" class="businfo">
+    <view class="busname">
+      {{busTime.name}}
+    </view>
+    <view class="direction" wx:if="{{busTime.detail.success}}">
+      开往 {{busTime.detail.dir.to}}
+    </view>
+    <view class="direction" wx:if="{{busTime.detail.success}}">
+      下一站 {{busTime.detail.dir.to}}
+    </view>
+  </view>
+  <view id="detail-right" class="bustime">
+    <view class="bustime-item bustime-item-1">
+      <view class="poi {{index.getColor(busTime.detail.first.poi)}}">{{busTime.detail.first.poi}}</view>
+      <view class="distance">{{busTime.detail.first.distance}}</view>
+    </view>
+    <view class="bustime-item bustime-item-2" wx-if="{{busTime.detail.second.poi}}">
+      <view class="poi {{index.getColor(busTime.detail.second.poi)}}">{{busTime.detail.second.poi}}</view>
+      <view class="distance">{{busTime.detail.second.distance}}</view>
+    </view>
+    <view class="bustime-item bustime-item-3" id="{{busTime.name}}" data-success="{{busTime.detail.success}}"
+      data-page="{{busList_index}}" data-index="{{bus_index}}" data-opposite="{{busTime.detail.dir.opposite}}"
+      catchtap="getOpposite" wx:if="{{busTime.detail.success}}">
+      <i-icon type="refresh" size="20" color="#bbbec4" i-class="icon-load" wx:if="{{busTime.refresh}}"></i-icon>
+      <image class="icon" src="/res/change.png" wx:else></image>
+    </view>
+  </view>
+</navigator>
