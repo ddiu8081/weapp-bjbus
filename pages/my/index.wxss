@@ -1,1 +1,35 @@
 /* pages/my/index.wxss */
+.my-header {
+  text-align: center;
+}
+
+.my-header .logo {
+  width: 76rpx;
+  height: 76rpx;
+  margin-top: 64rpx;
+}
+
+.my-header .title {
+  display: block;
+  font-size: 28rpx;
+  color: #909399;
+  margin: 18rpx 0 60rpx;
+}
+
+.my-list .list-item {
+  color: #666666;
+}
+
+.my-list button {
+  background-color: none;
+  margin: 0;
+  text-align: left;
+  border: 0;
+  color: #666666;
+  padding: 0;
+}
+
+.my-list .update-time {
+  color: #bbbec4;
+  margin-right: 10rpx;
+}

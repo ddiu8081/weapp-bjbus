@@ -14,7 +14,7 @@ page {
 }
 
 .container-mt {
-  margin-top: 108rpx;
+  padding-top: 108rpx;
 }
 
 .container-white {

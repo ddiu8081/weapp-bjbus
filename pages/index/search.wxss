@@ -66,6 +66,7 @@
   display: flex;
   height: 120rpx;
   align-items: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eeeeee;
   padding: 0 30rpx;
+  color: #666666;
 }

@@ -1,5 +1,18 @@
 <!--pages/my/index.wxml-->
-<view>{{props.data.userId}}</view>
-<button>常见问题</button>
-<button>更新日志</button>
-<button open-type="feedback">意见反馈</button>
+<view class="container container-white">
+  <view class="my-header">
+    <image class="logo" mode="aspectFit" src="/res/logo.png"></image>
+    <text class="title">北京公交出行</text>
+  </view>
+  <!-- <view>{{props.data.userId}}</view> -->
+  <i-cell-group class="my-list" i-class="list-item">
+    <i-cell title="常见问题" is-link></i-cell>
+    <i-cell title="更新日志" is-link url="/pages/dashboard/index">
+      <i-badge slot="footer" dot style="margin-right:10rpx;">
+        <view class="update-time">2018-09-16</view>
+      </i-badge>
+    </i-cell>
+    <button plain="true" open-type="feedback"><i-cell title="意见反馈" is-link></i-cell></button>
+    <i-cell title="支持作者" is-link></i-cell>
+  </i-cell-group>
+</view>

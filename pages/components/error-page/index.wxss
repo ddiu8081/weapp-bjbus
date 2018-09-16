@@ -1,8 +1,10 @@
 /* pages/components/error-page/index.wxss */
 .container-error {
+  background: #f3f3f3;
+  position: relative;
+  box-sizing: border-box;
   display: flex;
   height: 100%;
-  background: #f3f3f3;
   flex-direction: column;
   justify-content: center;
   align-items: center;
