@@ -1,0 +1,20 @@
+/* pages/components/error-page/index.wxss */
+.container-error {
+  display: flex;
+  height: 100%;
+  background: #f3f3f3;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-error .error-img {
+  width: 270rpx;
+  height: 192rpx;
+}
+
+.container-error .error-text {
+  font-size: 30rpx;
+  color: #bbbec4;
+  margin: 30rpx 0;
+}

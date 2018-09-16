@@ -1,16 +1,12 @@
 // pages/my/index.js
-Page({
+var observer = require('../../libs/observer').observer;
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
+Page(observer({
+  props: {
+    data: require('../../stores/globalData').default,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  data: {
+  },
   onLoad: function (options) {
 
   },
@@ -63,4 +59,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+}))

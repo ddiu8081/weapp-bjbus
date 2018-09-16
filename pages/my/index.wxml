@@ -1,2 +1,5 @@
 <!--pages/my/index.wxml-->
-<button open-type="feedback">123</button>
+<view>{{props.data.userId}}</view>
+<button>常见问题</button>
+<button>更新日志</button>
+<button open-type="feedback">意见反馈</button>

@@ -1,18 +1,17 @@
 <!--index.wxml-->
 <view class="header">
   <navigator url="search" class="search-bar">
-    <text>搜索位置、线路、站名</text>
+    <text>搜索位置、线路</text>
     <i-icon type="search" size="20" color="#80848f"/>
   </navigator>
-  <!-- <image src="/res/loc-search.png" style="height:40rpx;width:40rpx;margin-left:20rpx;"></image> -->
 </view>
-<view class="container container-mt" wx:if="{{props.data.location.isSet}}">
-  <view class="location-bar">
+<view class="container container-mt" wx:if="{{near.success}}">
+  <view class="location-bar" wx:if="{{props.data.location.isSet}}">
     <i-icon type="coordinates_fill" size="18" color="#fff"/>
-    <text>按位置搜索：海淀区西三环中路</text>
-    <i-icon type="close" color="#fff"/>
+    <text>按位置搜索：{{props.data.location.address}}</text>
+    <i-icon type="close" color="#fff" size="18" bindtap="resetLocation"/>
   </view>
-  <block wx:for="{{pois}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="name">
+  <block wx:for="{{near.pois}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="name">
     <stop-item info="{{stop_item}}" wx:if="{{stop_index == 0}}" i-class="stop-card-first">
       <first-buses count="{{stop_item.buses.count}}" list="{{first_buses}}"></first-buses>
     </stop-item>
@@ -26,3 +25,4 @@
     </stop-item>
   </block>
 </view>
+<error-page i-class="container-mt" errMsg="{{near.errMsg}}" wx:else></error-page>

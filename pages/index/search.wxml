@@ -1,17 +1,27 @@
 <!--pages/index/search.wxml-->
 <view class="header">
-  <input class="search-bar" placeholder="搜索线路、站名" focus placeholder-style="color:#cccccc"/>
+  <input bindinput="handleInput" confirm-type="search" class="search-bar" placeholder="搜索线路" focus placeholder-style="color:#cccccc"/>
 </view>
 <view class="container container-mt container-white">
-  <view class="location-bar">
+  <view class="result-div" wx:if="{{searchList.length > 0}}">
+    <block wx:for="{{searchList}}" wx:for-index="searchIndex" wx:for-item="searchItem" wx:key="id">
+      <navigator url="../bus/detail" class="search-item">
+        {{searchItem.linename}}
+      </navigator>
+    </block>
+  </view>
+  <view class="location-bar" bindtap="setLocation" wx:else>
     <view class="location-bar-header">
       <view class="location-title">
         <span class="title-square"></span>
         <text>按位置搜索</text>
       </view>
-      <view class="location-text" bindtap="setLocation">
-        {{location}}
+      <view class="location-text">
+        {{props.data.location.address}}
       </view>
+    </view>
+    <view>
+      <image class="loc-img" src="http://api.map.baidu.com/staticimage/v2?ak=8apGt7pBDKC44iShsHzwKGT2x8dBq14y&center={{props.data.location.lng + ',' + props.data.location.lat}}&width=800&height=800&zoom=18&coordtype=gcj02ll&copyright=1&dpiType=ph" mode="aspectFill"></image>
     </view>
   </view>
 </view>
