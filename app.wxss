@@ -1,14 +1,14 @@
 /**app.wxss**/
 page {
   height: 100%;
-  background: #ffffff;
+  background: #f3f3f3;
   font-size: 28rpx;
 }
 
 .container {
   background: #f3f3f3;
   position: relative;
-  height: 100%;
+  min-height: 100%;
   box-sizing: border-box;
   font-size: 28rpx;
 }

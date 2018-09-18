@@ -2,5 +2,6 @@
   "usingComponents": {
     "i-tabs": "../../dist/tabs/index",
     "i-tab": "../../dist/tab/index"
-  }
+  },
+  "navigationBarTitleText": "线路详情"
 }

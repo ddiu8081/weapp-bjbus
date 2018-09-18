@@ -1,0 +1,4 @@
+/* pages/my/more/support.wxss */
+.loadmore, .i-load-more-tip {
+  color: #bbbec4 !important;
+}

@@ -20,8 +20,23 @@ Page({
     });
   },
   onShow: function () {
-    this.fetchStopList(this.data.options);
-    wx.startPullDownRefresh();
+    var that = this;
+    wx.request({
+      url: 'https://api.ddiu.site/btic/detail',
+      data: {
+        'lineid': this.options.lineid
+      },
+      success: function (res) {
+        if (res.data.errcode == "200") {
+          console.log(res.data.busline[0]);
+          that.setData({
+            str: res.data.busline[0]
+          });
+        }
+      }
+    })
+    // this.fetchStopList(this.data.options);
+    // wx.startPullDownRefresh();
   },
   onHide: function() {
     var that = this;

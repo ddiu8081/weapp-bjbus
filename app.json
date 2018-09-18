@@ -9,7 +9,8 @@
     "pages/index/search",
     "pages/my/index",
     "pages/components/error-page/index",
-    "pages/my/favorite"
+    "pages/my/favorite",
+    "pages/my/more/support"
   ],
   "window": {
     "backgroundTextStyle": "dark",

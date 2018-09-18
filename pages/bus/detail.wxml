@@ -1,42 +1,12 @@
 <!--pages/bus/detail.wxml-->
 <view class="container">
-  <view class="stop-card">
-    <view class="bus-item-detail">
-              <view id="detail-left" class="businfo">
-                <view class="busname">
-                  {{bus_detail.name}}
-                </view>
-                <view class="direction" wx:if="{{bus_detail.success}}">
-                  开往 {{bus_detail.dir.to}}
-                </view>
-              </view>
-              <view id="detail-right" class="bustime">
-                <view class="bustime-item bustime-item-1">
-                  <view class="poi {{detail.getColor(bus_detail.first.poi)}}">{{bus_detail.first.poi}}</view>
-                  <view class="distance">{{bus_detail.first.distance}}</view>
-                </view>
-                <view class="bustime-item bustime-item-2" wx-if="{{bus_detail.second.poi}}">
-                  <view class="poi {{detail.getColor(bus_detail.second.poi)}}">{{bus_detail.second.poi}}</view>
-                  <view class="distance">{{bus_detail.second.distance}}</view>
-                </view>
-                <view class="bustime-item bustime-item-3" id="{{bus_name}}" data-success="{{bus_detail.success}}" data-page="{{busList_index}}" data-index="{{bus_index}}" data-opposite="{{bus_detail.dir.opposite}}" catchtap="getOpposite">
-                  <i-icon type="refresh" size="20" color="#bbbec4" i-class="icon-load" wx:if="{{bus_refresh}}"></i-icon>
-                  <block wx:else>
-                    <i-icon type="close" size="20" color="#bbbec4" wx:if="{{!bus_detail.success}}"></i-icon>
-                    <i-icon type="undo" size="20" color="#bbbec4" wx:else ></i-icon>
-                  </block>
-                      
-                </view>
-              </view>
-            </view>
-    <!-- <view>{{bus_detail.name}} - {{bus_detail.stop_id}} {{options.stop}}</view>
-    <view>{{bus_detail.dir.name}}</view>
-    <view>{{bus_detail.desc}}</view> -->
-  </view>
+  <view>{{str.linename}}</view>
+  <view>{{str.time}} {{str.ticket}}</view>
+  <view>{{str.coord}}</view>
 
-  <scroll-view scroll-x scroll-into-view="{{'stop_' + (bus_detail.stop_id - 5)}}" scroll-with-animation="true" wx:if="{{stop_list.count > 0}}">
+  <scroll-view scroll-x scroll-into-view="{{'stop_' + (bus_detail.stop_id - 5)}}" scroll-with-animation="true" wx:if="{{str.stations.station.length > 0}}">
     <view class="stop-list">
-      <block wx:for="{{stop_list.data}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="id">
+      <block wx:for="{{str.stations.station}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="id">
         <view id="{{'stop_' + stop_item.id + 'm'}}" class="stop-item">
           <view class="bus-icon {{detail.getStopItemLineClass(stopRight, stop_item.id + 'm', bus_detail.stop_id)}}">
             <image wx:if="{{buses_list[stop_item.id + 'm']}}" src="./ico.png" style="width:20px; height:20px;"></image>
@@ -48,8 +18,8 @@
             <image wx:if="{{buses_list[stop_item.id]}}" src="./ico.png" style="width:20px; height:20px;"></image>
           </view>
           <view class="stop-name-item {{(stopRight && stop_item.id == bus_detail.stop_id) ? 'this-stop' : ''}}">
-            <view class="stop-item-id">{{stop_item.id}}</view>
-            <view class="stop-item-name">{{stop_item.name}}</view> 
+            <view class="stop-item-id">{{stop_item.name}}</view>
+            <view class="stop-item-name">{{stop_item.no}}</view> 
           </view>
         </view>
       </block>

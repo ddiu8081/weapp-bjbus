@@ -1,0 +1,13 @@
+<!--pages/my/more/support.wxml-->
+<view class="container container-white">
+  <!-- <view class="my-header">
+    <image class="logo" mode="aspectFit" src="/res/logo.png"></image>
+    <text class="title">北京公交出行</text>
+  </view> -->
+  <button bindtap="showDonateImage">打赏</button>
+  <view>为了界面的整洁，北京公交出行承诺：如果小程序接入了广告，广告部分将只出现在本页且隐藏在底部。希望以广告形式支持项目的朋友可以上拉本页面，谢谢。</view>
+  
+  
+</view>
+<ad unit-id="adunit-dbad21e380384627"></ad>
+<i-load-more tip="感谢您对项目做出的贡献。👏" i-class="loadmore" loading="{{ false }}" />
