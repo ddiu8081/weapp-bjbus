@@ -11,30 +11,12 @@ Page({
   },
 
   onLoad: function (options) {
-    console.log(options);
     this.setData({
       options: options
     });
-    wx.setNavigationBarTitle({
-      title: options.name
-    });
   },
   onShow: function () {
-    var that = this;
-    wx.request({
-      url: 'https://api.ddiu.site/btic/detail',
-      data: {
-        'lineid': this.options.lineid
-      },
-      success: function (res) {
-        if (res.data.errcode == "200") {
-          console.log(res.data.busline[0]);
-          that.setData({
-            str: res.data.busline[0]
-          });
-        }
-      }
-    })
+    this.fetchBusDetail();
     // this.fetchStopList(this.data.options);
     // wx.startPullDownRefresh();
   },
@@ -67,24 +49,27 @@ Page({
   onPullDownRefresh: function () {
     this.fetchBusDetail(this.data.options);
   },
-  fetchStopList: function (options) {
+  fetchBusDetail: function () {
     var that = this;
-    var stop_list = {};
     wx.request({
-      url: 'https://api.ddiu.site/bjbus/stop',
+      url: 'https://api.ddiu.site/btic/detail',
       data: {
-        'line': options.name,
-        'dir': options.direction
+        'lineid': this.options.lineid
       },
       success: function (res) {
-        console.log(res.data);
-        that.setData({
-          stop_list: res.data[0].stop
-        });
+        if (res.data.success) {
+          console.log(res.data);
+          that.setData({
+            str: res.data
+          });
+          wx.setNavigationBarTitle({
+            title: res.data.linename
+          });
+        }
       }
     })
   },
-  fetchBusDetail: function (options) {
+  fetchBusTime: function (options) {
     var that = this;
     wx.showNavigationBarLoading();
     wx.request({

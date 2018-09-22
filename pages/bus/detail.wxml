@@ -1,12 +1,15 @@
 <!--pages/bus/detail.wxml-->
 <view class="container">
-  <view>{{str.linename}}</view>
+  <view>{{str.direction}}</view>
   <view>{{str.time}} {{str.ticket}}</view>
   <view>{{str.coord}}</view>
+  <navigator url="map?lineid={{str.lineid}}">
+    <button>在地图中显示</button>
+  </navigator>
 
-  <scroll-view scroll-x scroll-into-view="{{'stop_' + (bus_detail.stop_id - 5)}}" scroll-with-animation="true" wx:if="{{str.stations.station.length > 0}}">
+  <scroll-view scroll-x scroll-into-view="{{'stop_' + (bus_detail.stop_id - 5)}}" scroll-with-animation="true" wx:if="{{str.stations.length > 0}}">
     <view class="stop-list">
-      <block wx:for="{{str.stations.station}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="id">
+      <block wx:for="{{str.stations}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="id">
         <view id="{{'stop_' + stop_item.id + 'm'}}" class="stop-item">
           <view class="bus-icon {{detail.getStopItemLineClass(stopRight, stop_item.id + 'm', bus_detail.stop_id)}}">
             <image wx:if="{{buses_list[stop_item.id + 'm']}}" src="./ico.png" style="width:20px; height:20px;"></image>
