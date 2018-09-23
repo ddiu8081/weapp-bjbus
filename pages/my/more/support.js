@@ -12,9 +12,15 @@ Page({
   onShow: function () {
 
   },
+  onShareAppMessage: function (res) {
+    return {
+      title: '北京公交出行',
+      path: '/pages/index/index'
+    }
+  },
   showDonateImage: function () {
     wx.previewImage({
-      urls: ["https://ddiu.site/donate1.png", "https://ddiu.site/donate.png"]
+      urls: ["https://ddiu.site/donate.png"]
     });
   }
 })

@@ -25,6 +25,17 @@ page {
 	background: #f9f9f9;
 }
 
+.clear-btn {
+  background-color: transparent;
+  margin: 0;
+  text-align: left;
+  border: none !important;
+  color: #666666;
+  padding: 0;
+  line-height: 1;
+  border-radius: 0;
+}
+
 .title-square {
   display: inline-block;
   margin-right: 10rpx;
@@ -34,11 +45,21 @@ page {
   border-radius: 7rpx;
 }
 
-@keyframes ani-demo-spin {
-    from { transform: rotate(0deg);}
-    50%  { transform: rotate(180deg);}
-    to   { transform: rotate(360deg);}
+.article {
+  font-size: 26rpx;
+  padding: 30rpx 50rpx;
+  color: #909399;
 }
-.icon-load{
-    animation: ani-demo-spin 1s linear infinite;
+
+.article text {
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.article .h1 {
+  display: inline-block;
+  font-size: 34rpx;
+  margin: 20rpx 0 14rpx;
+  color: #303133;
+  box-shadow: inset 0 -26rpx rgb(255, 238, 193);
 }

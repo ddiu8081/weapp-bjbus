@@ -12,10 +12,10 @@
     <i-icon type="close" color="#fff" size="18" bindtap="resetLocation"/>
   </view>
   <block wx:for="{{near.pois}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="name">
-    <stop-item info="{{stop_item}}" wx:if="{{stop_index == 0}}" i-class="stop-card-first">
+    <stop-item info="{{stop_item}}" wx:if="{{stop_index == 0}}">
       <first-buses count="{{stop_item.buses.count}}" list="{{first_buses}}"></first-buses>
     </stop-item>
-    <stop-item info="{{stop_item}}" wx:else i-class="stop-card-normal">
+    <stop-item info="{{stop_item}}" wx:else>
       <view style="padding: 20rpx 30rpx;">
         <span class="bus-item" wx:for="{{stop_item.buses.data}}" wx:for-index="bus_index" wx:for-item="bus_item" wx:key="*this">
           {{bus_item}}

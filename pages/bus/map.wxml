@@ -1,10 +1,11 @@
 <!--pages/bus/map.wxml-->
+<bus-info-bar info="{{str}}"/>
 <map 
   id="map"
   subkey="VRCBZ-TC56I-ZO3GO-5KFML-D4ZH2-2ABUW"
-  longitude="116.313972" latitude="39.980014"
   scale='16'
   markers="{{markers}}" 
+  include-points="{{markers}}" 
   polyline="{{polyline}}" 
   bindregionchange="regionchange" 
   show-location

@@ -1,7 +1,7 @@
 /* pages/components/bus-item/bus-item.wxss */
 .bus-item-card {
   display: flex;
-  margin: 16rpx 30rpx 0;
+  margin: 16rpx 20rpx 0;
   box-sizing: border-box;
   flex-wrap: nowrap;
   justify-content: space-between;

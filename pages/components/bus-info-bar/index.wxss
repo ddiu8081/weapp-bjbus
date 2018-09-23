@@ -1,0 +1,18 @@
+/* pages/components/bus-info-bar/index.wxss */
+.info-bar {
+  display: flex;
+  height: 120rpx;
+  background-color: #F2F6FC;
+  padding: 0 30rpx;
+  align-items: center;
+}
+.info {
+  font-size: 26rpx;
+  color: #909399;
+  flex: 1;
+}
+.icon {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+}

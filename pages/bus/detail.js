@@ -35,15 +35,6 @@ Page({
     var that = this;
     console.log("bus - on unload");
     console.log(that.data.bus_detail.desc);
-    wx.setTopBarText({
-      text: that.data.bus_detail.desc,
-      success: function (res) {
-        console.log(res);
-      },
-      complete: function (res) {
-        console.log(res);
-      }
-    });
     clearTimeout(timer);
   },
   onPullDownRefresh: function () {

@@ -28,15 +28,6 @@
   background-color: #fbfbfb;
 }
 
-.my-list button {
-  background-color: none;
-  margin: 0;
-  text-align: left;
-  border: 0;
-  color: #666666;
-  padding: 0;
-}
-
 .my-list .update-time {
   color: #bbbec4;
   margin-right: 10rpx;

@@ -11,7 +11,8 @@
     "pages/components/error-page/index",
     "pages/my/favorite",
     "pages/my/more/support",
-    "pages/bus/map"
+    "pages/bus/map",
+    "pages/components/bus-info-bar/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

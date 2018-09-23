@@ -1,0 +1,8 @@
+<!--pages/components/bus-info-bar/index.wxml-->
+<view class="info-bar">
+  <view class="info">
+    <view>{{info.direction}}</view>
+    <view>{{info.time}} {{info.ticket}}</view>
+  </view>
+  <image class="icon" src="/res/line_star_fill.png"></image>
+</view>

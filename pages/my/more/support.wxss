@@ -1,4 +1,41 @@
 /* pages/my/more/support.wxss */
-.loadmore, .i-load-more-tip {
-  color: #bbbec4 !important;
+.support-icons {
+  text-align: center;
+  padding-bottom: 50rpx;
+}
+
+.support-icons image {
+  width: 46rpx;
+  height: 46rpx;
+  padding: 24rpx;
+  background-color: #f9f9f9;
+  border-radius: 50%;
+  border: 1px solid #eeeeee;
+}
+
+.support-icons .support-icons-item {
+  display: inline-block;
+  margin: 40rpx;
+}
+
+.support-icons .support-icons-item text {
+  display: block;
+  color: #bbbec4;
+  font-size: 24rpx;
+}
+
+.loadmore {
+  margin-top: 20rpx;
+  color: #bbbec4;
+}
+
+.loadmore .text {
+  margin: 30rpx 0 40rpx;
+}
+
+.loadmore .text text {
+  display: block;
+  text-align: center;
+  margin: 8rpx;
+  font-size: 24rpx;
 }

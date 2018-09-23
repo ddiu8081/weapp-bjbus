@@ -1,13 +1,36 @@
 <!--pages/my/more/support.wxml-->
 <view class="container container-white">
-  <!-- <view class="my-header">
-    <image class="logo" mode="aspectFit" src="/res/logo.png"></image>
-    <text class="title">北京公交出行</text>
-  </view> -->
-  <button bindtap="showDonateImage">打赏</button>
-  <view>为了界面的整洁，北京公交出行承诺：如果小程序接入了广告，广告部分将只出现在本页且隐藏在底部。希望以广告形式支持项目的朋友可以上拉本页面，谢谢。</view>
-  
-  
+  <view class="article">
+    <text>2018年7月，我从南京来到北京。没有了电子站牌和一众公交查询工具，就试着写了一款小程序。</text>
+    <text>目前，大部分数据运算都靠跑在阿里云学生机上的后端接口。随着用户量增加，服务器可能要承担更多的压力，后期可能会在服务器维护、独立域名、地图接口配额等地方产生一定开销。如果您喜欢这个小程序，可以考虑通过以下方式支持。</text>
+    <view class="h1">分享</view>
+    <text>如果你喜欢这个小程序，可以分享给你的朋友。您可以在首页及详情页使用右上角分享功能，也可以直接点击下方按钮。</text>
+    <view class="h1">反馈意见或建议</view>
+    <text>如果您有好的功能建议或者用起来不舒服的地方，均可以通过反馈功能提交给我，共同协助小程序变得更好。</text>
+    <view class="h1">捐助项目</view>
+    <text>您可以通过下方打赏按钮赞助该项目。</text>
+    <view class="h1">广告支持</view>
+    <text>如你所见，我对界面的整洁有着强迫症的追求。「北京公交出行」承诺：广告内容将只出现在本页面底部，您可以在本页上拉查看。如果刚好感兴趣，可以点击一下表示支持，谢谢。</text>
+  </view>
+  <view class="support-icons">
+    <view class="support-icons-item">
+      <button class="clear-btn" plain="true" open-type="share"><image src="/res/icon_share.png"></image></button>
+      <text>分享</text>
+    </view>
+    <view class="support-icons-item">
+      <button class="clear-btn" plain="true" open-type="feedback"><image src="/res/icon_feedback.png"></image></button>
+      <text>反馈</text>
+    </view>
+    <view class="support-icons-item">
+      <image bindtap="showDonateImage" src="/res/icon_donate.png"></image>
+      <text>打赏</text>
+    </view>
+  </view>
 </view>
-<ad unit-id="adunit-dbad21e380384627"></ad>
-<i-load-more tip="感谢您对项目做出的贡献。👏" i-class="loadmore" loading="{{ false }}" />
+<view class="loadmore">
+  <ad unit-id="adunit-dbad21e380384627"></ad>
+  <view class="text">
+    <text>感谢您选择低碳出行方式。</text>
+    <text>希望我们可以把北京变得更美好。👏</text>
+  </view>
+</view>

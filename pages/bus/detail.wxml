@@ -1,8 +1,6 @@
 <!--pages/bus/detail.wxml-->
 <view class="container">
-  <view>{{str.direction}}</view>
-  <view>{{str.time}} {{str.ticket}}</view>
-  <view>{{str.coord}}</view>
+  <bus-info-bar info="{{str}}"/>
   <navigator url="map?lineid={{str.lineid}}">
     <button>在地图中显示</button>
   </navigator>

@@ -5,13 +5,16 @@
   background: #ffffff;
   overflow:hidden;
   font-size: 28rpx;
+  margin: 20rpx;
+  border-radius: 10rpx;
+  box-shadow: 0 3rpx 5rpx hsla(220,4%,58%,.1);
 }
 
 /* STOP CARD HEADER */
 
 .stop-card-header {
   display: flex;
-  height: 84rpx;
+  height: 80rpx;
   background-color: #fbfbfb;
   padding: 0 30rpx;
   align-items: center;
@@ -21,7 +24,7 @@
   display: inline-block;
   flex: 1;
   color: #495060;
-  font-size: 32rpx;
+  font-size: 30rpx;
 }
 
 .stop-card-header .stop-name .stop-buses-count {

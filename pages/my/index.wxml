@@ -12,7 +12,7 @@
         <view class="update-time">2018-09-16</view>
       </i-badge>
     </i-cell>
-    <button plain="true" open-type="feedback" hover-class="list-item-hover"><i-cell title="意见反馈" is-link i-class="list-item"></i-cell></button>
+    <button class="clear-btn" plain="true" open-type="feedback" hover-class="list-item-hover"><i-cell title="意见反馈" is-link i-class="list-item"></i-cell></button>
     <i-cell title="支持项目" is-link url="more/support" i-class="list-item"></i-cell>
   </i-cell-group>
   <!-- <ad unit-id="adunit-dbad21e380384627"></ad> -->

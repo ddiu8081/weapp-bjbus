@@ -1,6 +1,4 @@
 {
-  "usingComponents": {
-    "i-load-more": "../../../dist/load-more/index"
-  },
-  "navigationBarTitleText": "支持项目"
+  "navigationBarTitleText": "支持项目",
+  "enablePullDownRefresh": false
 }
