@@ -24,7 +24,11 @@ Page(observer({
     // clearTimeout(timer);
   },
   onPullDownRefresh: function () {
-    this.resetLocation();
+    if (this.props.data.location.isSet) {
+      that.initStopList();
+    } else {
+      this.resetLocation();
+    }
   },
   onShareAppMessage: function () {
     return {
