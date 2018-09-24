@@ -6,13 +6,15 @@
   </view>
   <!-- <view>{{props.data.userId}}</view> -->
   <i-cell-group class="my-list">
-    <i-cell title="常见问题" is-link i-class="list-item"></i-cell>
-    <i-cell title="更新日志" is-link url="/pages/dashboard/index" i-class="list-item">
-      <i-badge slot="footer" dot style="margin-right:10rpx;">
-        <view class="update-time">2018-09-16</view>
+    <i-cell title="常见问题" is-link url="more/faq" i-class="list-item"></i-cell>
+    <i-cell title="更新日志" is-link url="more/changelog" i-class="list-item">
+      <i-badge slot="footer" dot="{{userVer != update}}" style="margin-right:10rpx;">
+        <view class="update-time">{{update}}</view>
       </i-badge>
     </i-cell>
-    <button class="clear-btn" plain="true" open-type="feedback" hover-class="list-item-hover"><i-cell title="意见反馈" is-link i-class="list-item"></i-cell></button>
+    <button class="clear-btn" plain="true" open-type="feedback" hover-class="list-item-hover">
+      <i-cell title="意见反馈" is-link i-class="list-item"></i-cell>
+    </button>
     <i-cell title="支持项目" is-link url="more/support" i-class="list-item"></i-cell>
   </i-cell-group>
   <!-- <ad unit-id="adunit-dbad21e380384627"></ad> -->

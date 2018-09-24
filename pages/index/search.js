@@ -32,7 +32,7 @@ Page(observer({
     });
   },
   handleInput: function (event) {
-    var str = event.detail.value;
+    var str = event.detail.value.toUpperCase();
     if (str.length > 0) {
       this.search(str);
     } else {

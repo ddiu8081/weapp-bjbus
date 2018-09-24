@@ -1,4 +1,5 @@
 // pages/bus/detail.js
+var app = getApp();
 
 var timer;
 Page({
@@ -22,13 +23,6 @@ Page({
   },
   onHide: function() {
     var that = this;
-    wx.setTopBarText({
-      text: that.data.bus_detail.desc,
-      success: function (res) {
-        console.log(res);
-      }
-    });
-    console.log("bus - on hide");
     clearTimeout(timer);
   },
   onUnload: function () {
@@ -43,7 +37,7 @@ Page({
   fetchBusDetail: function () {
     var that = this;
     wx.request({
-      url: 'https://api.ddiu.site/btic/detail',
+      url: app.globalData.headUrl + '/btic/detail',
       data: {
         'lineid': this.options.lineid
       },

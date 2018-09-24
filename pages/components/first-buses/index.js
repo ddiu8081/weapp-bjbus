@@ -10,11 +10,12 @@ Component({
   },
   ready: function () {
     var that = this;
-    clearTimeout(timer);
-    timer = setTimeout(function () {
-      that.fetchPageDetail(that.data.swiper_current);
-      console.log(new Date());
-    }, 8000);
+    that.fetchPageDetail(that.data.swiper_current);
+    // clearTimeout(timer);
+    // timer = setTimeout(function () {
+    //   that.fetchPageDetail(that.data.swiper_current);
+    //   console.log(new Date());
+    // }, 8000);
   },
   methods: {
     loadPage: function (event) {
@@ -31,11 +32,11 @@ Component({
         that.fetchBusDetail(buses_detail[i].name, dir, that.data.first_stop, page, i);
       }
       wx.stopPullDownRefresh();
-      clearTimeout(timer);
-      timer = setTimeout(function () {
-        that.fetchPageDetail(that.data.swiper_current);
-        console.log(new Date());
-      }, 8000);
+      // clearTimeout(timer);
+      // timer = setTimeout(function () {
+      //   that.fetchPageDetail(that.data.swiper_current);
+      //   console.log(new Date());
+      // }, 8000);
     },
     fetchBusDetail: function (line, dir, stop, page, index) {
       var that = this;

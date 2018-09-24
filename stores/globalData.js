@@ -2,7 +2,6 @@ var extendObservable = require('../libs/mobx').extendObservable;
 var globalData = function () {
   extendObservable(this, {
     userId: '',
-    busList: [],
     location: {
       isSet: false,
       lat: 0,
@@ -28,21 +27,20 @@ var globalData = function () {
       }
     });
   }
-
-  this.login = function () {
-    var that = this;
-    wx.login({
-      success: function (res) {
-        wx.request({
-          url: 'https://api.ddiu.site/bjbus/user/login?code=' + res.code,
-          success: function (res) {
-            console.log(res.data);
-            that.userId = res.data.openid;
-          }
-        })
-      }
-    })
-  }
+  // this.login = function () {
+  //   var that = this;
+  //   wx.login({
+  //     success: function (res) {
+  //       wx.request({
+  //         url: 'https://api.ddiu.site/bjbus/app/user/login?code=' + res.code,
+  //         success: function (res) {
+  //           console.log(res.data);
+  //           that.userId = res.data.openid;
+  //         }
+  //       })
+  //     }
+  //   })
+  // }
 }
 
 module.exports = {

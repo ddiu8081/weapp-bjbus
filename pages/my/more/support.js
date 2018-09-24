@@ -1,20 +1,11 @@
 // pages/my/more/support.js
 Page({
   data: {
-
-  },
-  onLoad: function (options) {
-
-  },
-  onReady: function () {
-
-  },
-  onShow: function () {
-
   },
   onShareAppMessage: function (res) {
     return {
-      title: '北京公交出行',
+      title: '北京公交出行 | 更好用的实时公交',
+      imageUrl: '/res/share_banner.png',
       path: '/pages/index/index'
     }
   },

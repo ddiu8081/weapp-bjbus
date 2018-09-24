@@ -16,15 +16,12 @@
   margin: 18rpx 0 60rpx;
 }
 
-.my-list {
-  color: #666666;
-}
-
 .my-list .list-item {
+  color: #666666;
   background-color: transparent;
 }
 
-.my-list .list-item-hover, .list-item:hover {
+.my-list .list-item-hover, .list-item:active {
   background-color: #fbfbfb;
 }
 

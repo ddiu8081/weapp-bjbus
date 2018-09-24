@@ -1,4 +1,5 @@
 //index.js
+var app = getApp();
 var observer = require('../../libs/observer').observer;
 
 Page(observer({
@@ -7,15 +8,14 @@ Page(observer({
   },
   data: {
     success: true,
+    notice: '',
     first_stop: '',
     near: {},
     first_buses: {}
   },
   onLoad: function () {
     var that = this;
-    // that.props.data.resetLoc(function () {
-    //   that.initStopList();
-    // });
+    this.getNotice();
     this.resetLocation();
   },
   onShow: function () {
@@ -24,9 +24,25 @@ Page(observer({
     // clearTimeout(timer);
   },
   onPullDownRefresh: function () {
-    // this.fetchPageDetail(this.data.swiper_current);
+    this.resetLocation();
   },
   onShareAppMessage: function () {
+    return {
+      title: '北京公交出行 | 更好用的实时公交',
+      imageUrl: '/res/share_banner.png',
+      path: '/pages/index/index'
+    }
+  },
+  getNotice: function () {
+    var that = this;
+    wx.pro.request({
+      url: app.globalData.headUrl + '/bjbus/app/notice',
+    }).then(res => {
+      console.log(res.data);
+      that.setData({
+        notice: res.data.notice
+      })
+    });
   },
   resetLocation: function() {
     var that = this;
@@ -41,7 +57,7 @@ Page(observer({
 
     wx.showNavigationBarLoading();
     wx.pro.request({
-      url: 'https://api.ddiu.site/bjbus/around',
+      url: app.globalData.headUrl + '/bjbus/around',
       data: {
         'location': longitude + ',' + latitude
       }
@@ -72,7 +88,7 @@ Page(observer({
         first_buses: first_buses
       })
       wx.hideNavigationBarLoading();
-      wx.startPullDownRefresh();
+      // wx.startPullDownRefresh();
     });
   },
   getOpposite: function (event) {

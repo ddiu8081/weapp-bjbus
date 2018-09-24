@@ -26,7 +26,7 @@
 
 .location-bar {
   margin: 0 30rpx;
-  padding-top: 10rpx; 
+  margin-top: 30rpx; 
   background: #fefefe;
   font-size: 28rpx;
 }
@@ -34,7 +34,7 @@
 .location-bar-header {
   display: flex;
   height: 50rpx;
-  margin: 30rpx 0 20rpx;
+  margin-bottom: 20rpx;
   align-items: center;
 }
 

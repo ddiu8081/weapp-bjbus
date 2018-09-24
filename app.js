@@ -7,19 +7,31 @@ App(observer({
     data: require('./stores/globalData').default,
   },
   globalData: {
-    userInfo: null
+    headUrl: 'https://api.ddiu.site',
+    // headUrl: 'http://localhost:8000',
+    userId: ''
   },
   onLaunch: function () {
-    this.props.data.login();
+    this.login();
     this.initBusList();
-    wx.showTabBarRedDot({
-      index: 2
+  },
+  login: function () {
+    var that = this;
+    wx.pro.login()
+    .then(res => {
+      wx.request({
+        url: that.globalData.headUrl + '/bjbus/app/user/login?code=' + res.code,
+        success: function (res) {
+          console.log(res.data);
+          that.globalData.userId = res.data.openid;
+        }
+      })
     });
   },
   initBusList: function () {
     var that = this;
     wx.request({
-      url: 'https://api.ddiu.site/btic/list',
+      url: that.globalData.headUrl + '/btic/list',
       success: function (res) {
         console.log(res.data);
         that.globalData.busList = {

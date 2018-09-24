@@ -1,0 +1,9 @@
+<!--pages/my/more/faq.wxml-->
+<view class="container container-white">
+  <view class="article">
+    <view wx:for="{{faq}}" wx:for-item="faqItem" wx:key="q">
+      <view class="h1">{{faqItem.q}}</view>
+      <text>{{faqItem.a}}</text>
+    </view>
+  </view>
+</view>

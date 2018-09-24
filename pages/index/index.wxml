@@ -6,6 +6,9 @@
   </navigator>
 </view>
 <view class="container container-mt" wx:if="{{near.success}}">
+  <i-notice-bar icon="systemprompt" color="#80848f" loop closable wx:if="{{notice}}">
+    {{notice}}
+  </i-notice-bar>
   <view class="location-bar" wx:if="{{props.data.location.isSet}}">
     <i-icon type="coordinates_fill" size="18" color="#fff"/>
     <text>按位置搜索：{{props.data.location.address}}</text>

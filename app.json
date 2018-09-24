@@ -12,7 +12,9 @@
     "pages/my/favorite",
     "pages/my/more/support",
     "pages/bus/map",
-    "pages/components/bus-info-bar/index"
+    "pages/components/bus-info-bar/index",
+    "pages/my/more/faq",
+    "pages/my/more/changelog"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -22,12 +24,6 @@
     "backgroundColor": "#ffffff",
     "enablePullDownRefresh": true,
     "navigationStyle": "default"
-  },
-  "plugins": {
-    "crypto": {
-      "version": "0.0.002",
-      "provider": "wxf25d506ff81e19fb"
-    }
   },
   "tabBar": {
     "color": "#515151",

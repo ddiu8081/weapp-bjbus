@@ -1,13 +1,15 @@
 <!--pages/bus/map.wxml-->
-<bus-info-bar info="{{str}}"/>
+<bus-info-bar info="{{lineData}}"/>
 <map 
   id="map"
   subkey="VRCBZ-TC56I-ZO3GO-5KFML-D4ZH2-2ABUW"
   scale='16'
   markers="{{markers}}" 
-  include-points="{{markers}}" 
+  include-points="{{stopMarks}}" 
   polyline="{{polyline}}" 
-  bindregionchange="regionchange" 
   show-location
   style="width: 100%; height: 100%;">
+  <cover-view class="controls" bindtap="refresh">
+    刷新
+  </cover-view>
 </map>

@@ -1,0 +1,9 @@
+<!--pages/my/more/changelog.wxml-->
+<view class="container container-white">
+  <view class="article">
+    <view wx:for="{{changeLog}}" wx:for-item="logItem" wx:key="q">
+      <view class="h1">{{logItem.date}}</view>
+      <text wx:for="{{logItem.note}}" wx:for-item="item" wx:key="*this">{{item}}</text>
+    </view>
+  </view>
+</view>

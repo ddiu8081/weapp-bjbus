@@ -11,10 +11,11 @@ page {
   min-height: 100%;
   box-sizing: border-box;
   font-size: 28rpx;
+  overflow:hidden;
 }
 
 .container-mt {
-  padding-top: 108rpx;
+  margin-top: 108rpx;
 }
 
 .container-white {
