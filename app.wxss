@@ -7,11 +7,13 @@ page {
 
 .container {
   background: #f3f3f3;
-  position: relative;
-  min-height: 100%;
+  position: absolute;
+  width: 100%;
   box-sizing: border-box;
   font-size: 28rpx;
-  overflow:hidden;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
 }
 
 .container-mt {

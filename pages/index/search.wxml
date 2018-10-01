@@ -2,6 +2,7 @@
 <view class="header">
   <input bindinput="handleInput" confirm-type="search" class="search-bar" placeholder="搜索线路" focus placeholder-style="color:#cccccc"/>
 </view>
+<view class="placeholder"></view>
 <view class="container container-mt container-white">
   <view class="result-div" wx:if="{{searchList.length > 0}}">
     <block wx:for="{{searchList}}" wx:for-index="searchIndex" wx:for-item="searchItem" wx:key="id">

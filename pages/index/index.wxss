@@ -29,21 +29,12 @@
   color: #cccccc;
 }
 
-.loc-bar {
-  display: flex;
-  background-color: rgba(0,0,0,0.20); 
-  /* background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); */
+.userAvatar {
   height: 68rpx;
-  padding: 0 25rpx;
-  width: 100%;
-  border-radius: 50rpx;
-  align-items: center;
-  /* box-shadow: 0 1px 10px #ddd; */
-}
-
-.loc-bar text {
-  flex: 1;
-  color: #fff;
+  width: 68rpx;
+  border-radius: 34rpx;
+  margin-right: 10rpx;
+  opacity: .8;
 }
 
 /* LOCATION BAR */

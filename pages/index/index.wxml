@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="header">
+  <!-- <open-data type="userAvatarUrl" class="userAvatar"></open-data> -->
   <navigator url="search" class="search-bar">
     <text>搜索位置、线路</text>
     <i-icon type="search" size="20" color="#80848f"/>

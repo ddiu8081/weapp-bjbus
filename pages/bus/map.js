@@ -8,7 +8,7 @@ Page({
     polyline: [],
     stopMarks: []
   },
-  onLoad: function (options) {
+  onShow: function (options) {
     this.initData();
   },
   initData: function (lineid) {

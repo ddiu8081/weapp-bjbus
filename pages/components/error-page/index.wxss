@@ -1,13 +1,15 @@
 /* pages/components/error-page/index.wxss */
 .container-error {
   background: #f3f3f3;
-  position: relative;
+  position: absolute;
+  width: 100%;
   box-sizing: border-box;
   display: flex;
-  height: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  top: 0;
+  bottom: 0;
 }
 
 .container-error .error-img {
