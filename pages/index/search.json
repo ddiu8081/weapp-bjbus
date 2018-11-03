@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "搜索",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "bus-item-list": "../../components/bus-item-list/index"
+  }
 }

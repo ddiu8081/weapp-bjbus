@@ -11,7 +11,7 @@ Page({
   },
   showDonateImage: function () {
     wx.previewImage({
-      urls: ["https://ddiu.site/donate.png"]
+      urls: ["https://ddiu.site/wechat_donate.jpg"]
     });
   }
 })

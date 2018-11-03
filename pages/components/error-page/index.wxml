@@ -1,5 +1,0 @@
-<!--pages/components/error-page/index.wxml-->
-<view class="container-error i-class">
-  <image class="error-img" mode="aspectFit" src="/res/bus_error.png"></image>
-  <text class="error-text">{{errMsg}}</text>
-</view>

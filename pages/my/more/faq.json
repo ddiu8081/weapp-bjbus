@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "常见问题",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": false,
+  "navigationBarBackgroundColor": "#f7f7f7"
 }

@@ -1,0 +1,5 @@
+<!--pages/components/error-page/index.wxml-->
+<view class="container-func i-class">
+  <image class="img" mode="aspectFit" src="/res/bus_error.png"></image>
+  <text class="text">{{msg}}</text>
+</view>

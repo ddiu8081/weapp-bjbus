@@ -1,27 +1,12 @@
 /**app.wxss**/
 page {
   height: 100%;
-  background: #f3f3f3;
+  background: #f7f7f7;
   font-size: 28rpx;
 }
 
-.container {
-  background: #f3f3f3;
-  position: absolute;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 28rpx;
-  overflow: hidden;
-  top: 0;
-  bottom: 0;
-}
-
-.container-mt {
-  margin-top: 108rpx;
-}
-
-.container-white {
-  background: #ffffff;
+.pt240 {
+  padding-top: 240rpx;
 }
 
 .navigator-hover {
@@ -48,10 +33,56 @@ page {
   border-radius: 7rpx;
 }
 
+.fixed {
+  position: fixed;
+  z-index: 120;
+}
+
+.search {
+  background: #FFDD79;
+  margin: 0;
+  padding: 30rpx 40rpx;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  width: 750rpx;
+  box-sizing: border-box;
+  box-shadow: 0 2rpx 5rpx hsla(220,4%,58%,.1);
+}
+
+.nav-bar {
+  background: #ffffff;
+  width: 750rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  box-shadow: 0 2rpx 5rpx hsla(220,4%,58%,.1);
+}
+
+.nav-bar .nav-bar-item {
+  display: inline-block;
+  width: 170rpx;
+  height: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  margin: 0 30rpx;
+  box-sizing: border-box;
+  color: #909399;
+}
+
+.nav-bar .nav-bar-item.active {
+  color: #303133;
+  border-bottom: 6rpx solid #FFD45A;
+}
+
 .article {
   font-size: 26rpx;
-  padding: 30rpx 50rpx;
+  margin: 30rpx 20rpx;
   color: #909399;
+  background: #fff;
+  padding: 40rpx 40rpx;
+  box-shadow: 0 0 10px #eee;
 }
 
 .article text {

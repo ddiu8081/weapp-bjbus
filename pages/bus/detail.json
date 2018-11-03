@@ -2,7 +2,7 @@
   "usingComponents": {
     "i-tabs": "../../dist/tabs/index",
     "i-tab": "../../dist/tab/index",
-    "bus-info-bar": "../components/bus-info-bar/index"
+    "bus-info-bar": "../../components/bus-info-bar/index"
   },
   "navigationBarTitleText": "线路详情"
 }

@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "支持项目",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": false,
+  "navigationBarBackgroundColor": "#f7f7f7"
 }

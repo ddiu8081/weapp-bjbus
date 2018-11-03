@@ -1,0 +1,72 @@
+/* pages/components/stop-item/index.wxss */
+/* STOP CARD */
+
+.stop-card {
+  background: #ffffff;
+  overflow:hidden;
+  margin-bottom: 24rpx;
+  /* border-radius: 10rpx; */
+  box-shadow: 0 3rpx 5rpx hsla(220,4%,58%,.1);
+}
+
+/* STOP CARD HEADER */
+
+.stop-card-header {
+  display: flex;
+  height: 40rpx;
+  padding: 0 20rpx;
+  align-items: center;
+  border-left: 4rpx solid #ffdd79;
+  box-sizing: border-box;
+  margin: 20rpx 0 10rpx;
+}
+
+.stop-card-header .stop-name {
+  display: inline-block;
+  flex: 1;
+  color: #303133;
+  font-size: 28rpx;
+}
+
+.stop-card-header .stop-name .stop-buses-count {
+  display: inline-block;
+  color: #c0c4cc;
+  font-size: 28rpx;
+}
+
+.stop-card-header .stop-distance {
+  float: right;
+  font-size: 26rpx;
+  color: #c0c4cc;
+}
+
+/* STOP CARD CONTENT */
+
+.stop-card-content {
+  position: relative;
+  /* overflow: hidden; */
+  /* white-space: nowrap; */
+  margin: 0;
+}
+
+.bus-item {
+  font-size: 24rpx;
+  margin-right: 12rpx;
+  margin-bottom: 12rpx;
+  background-color: #f9f9f9;
+  display: inline-block;
+  padding: 5rpx 10rpx;
+  color: #909399;
+  /* border-radius: 4p`x; */
+  box-sizing: border-box;
+  /* border: 1rpx solid hsla(220,4%,58%,.2); */
+  white-space: nowrap;
+}
+
+.mask {
+  width:100%;
+	position: absolute;
+	top:0;
+	height: 100%;
+  background-image: linear-gradient(90deg,hsla(255,0%,100%,0) 80%,#fff 100%);
+}

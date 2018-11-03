@@ -1,0 +1,3 @@
+<block wx:for="{{buslist}}" wx:for-index="bus_index" wx:for-item="bus_item" wx:key="name">
+  <bus-item busdata="{{bus_item}}" i-class="bus-item"></bus-item>
+</block>

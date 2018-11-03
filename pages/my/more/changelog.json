@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "更新日志",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": false,
+  "navigationBarBackgroundColor": "#f7f7f7"
 }

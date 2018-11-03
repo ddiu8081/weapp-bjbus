@@ -1,36 +1,43 @@
-// pages/bus/detail.js
+import store from '../../store'
+import create from '../../libs/store/create'
+
 var app = getApp();
 
 var timer;
-Page({
-  data: {
-    options: [],
-    bus_detail: [],
-    stop_list: [],
-    buses_list: [],
-    stopRight: false,
-  },
-
+create(store, ({
   onLoad: function (options) {
-    this.setData({
-      options: options
+    console.log(options);
+    this.update({
+      thisBus: {
+        id: options.id,
+        stop: options.stop
+      },
+      lastSeen: [{
+        id: options.id,
+        stop: options.stop
+      }]
     });
   },
   onShow: function () {
+    var that = this;
     this.fetchBusDetail();
     // this.fetchStopList(this.data.options);
     // wx.startPullDownRefresh();
+    wx.setStorage({
+      key: 'lastSeen',
+      data: that.store.data.thisBus,
+    })
   },
-  onHide: function() {
-    var that = this;
-    clearTimeout(timer);
-  },
-  onUnload: function () {
-    var that = this;
-    console.log("bus - on unload");
-    console.log(that.data.bus_detail.desc);
-    clearTimeout(timer);
-  },
+  // onHide: function() {
+  //   var that = this;
+  //   clearTimeout(timer);
+  // },
+  // onUnload: function () {
+  //   var that = this;
+  //   console.log("bus - on unload");
+  //   console.log(that.data.bus_detail.desc);
+  //   clearTimeout(timer);
+  // },
   onPullDownRefresh: function () {
     this.fetchBusDetail(this.data.options);
   },
@@ -39,7 +46,7 @@ Page({
     wx.request({
       url: app.globalData.headUrl + '/btic/detail',
       data: {
-        'lineid': this.options.lineid
+        'lineid': that.options.id
       },
       success: function (res) {
         if (res.data.success) {
@@ -57,6 +64,18 @@ Page({
   fetchBusTime: function (options) {
     var that = this;
     wx.showNavigationBarLoading();
+    wx.pro.request({
+      url: app.globalData.headUrl + '/btic/time',
+      data: {
+        'lineid': busData.id,
+        'stopid': busData.stop
+      },
+    }).then(res => {
+      console.log(res.data);
+      that.update({
+        lineTime: res.data
+      })
+    });
     wx.request({
       url: 'https://api.ddiu.site/bjbus/time',
       data: {
@@ -88,4 +107,4 @@ Page({
       }
     });
   }
-})
+}));

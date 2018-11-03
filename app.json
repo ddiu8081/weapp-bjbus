@@ -3,49 +3,45 @@
     "pages/index/index",
     "pages/bus/detail",
     "pages/stop/detail",
-    "pages/components/bus-item/index",
-    "pages/components/first-buses/index",
-    "pages/components/stop-item/index",
     "pages/index/search",
-    "pages/my/index",
-    "pages/components/error-page/index",
-    "pages/my/favorite",
     "pages/my/more/support",
     "pages/bus/map",
-    "pages/components/bus-info-bar/index",
     "pages/my/more/faq",
-    "pages/my/more/changelog"
+    "pages/my/more/changelog",
+    "components/bus-item/index",
+    "components/swiper-view/index",
+    "components/stop-item/index",
+    "components/func-page/index",
+    "components/skeleton-page/index",
+    "components/bus-info-bar/index",
+    "components/bus-item-list/index",
+    "pages/index/tools"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#FFDD79",
     "navigationBarTitleText": "北京公交出行",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "#FFDD79",
     "enablePullDownRefresh": true,
     "navigationStyle": "default"
   },
   "tabBar": {
+    "position": "bottom",
     "color": "#515151",
     "selectedColor": "#000000",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "附近",
-        "iconPath": "res/coordinates.png",
-        "selectedIconPath": "res/coordinates_fill.png"
+        "text": "实时",
+        "iconPath": "res/icon/tab/stealth.png",
+        "selectedIconPath": "res/icon/tab/stealth_fill.png"
       },
       {
-        "pagePath": "pages/my/favorite",
-        "text": "收藏",
-        "iconPath": "res/collection.png",
-        "selectedIconPath": "res/collection_fill.png"
-      },
-      {
-        "pagePath": "pages/my/index",
-        "text": "我",
-        "iconPath": "res/mine.png",
-        "selectedIconPath": "res/mine_fill.png"
+        "pagePath": "pages/index/tools",
+        "text": "工具箱",
+        "iconPath": "res/icon/tab/manage.png",
+        "selectedIconPath": "res/icon/tab/manage_fill.png"
       }
     ]
   }

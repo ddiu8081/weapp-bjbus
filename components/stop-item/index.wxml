@@ -1,0 +1,18 @@
+<!--pages/components/stop-item/index.wxml-->
+<navigator url="../stop/detail?name={{info.name}}&location={{info.location}}&buses={{info.buses.str}}" hover-stop-propagation="true" class="stop-card i-class">
+  <view class="stop-card-header">
+    <view class="stop-name">
+      {{info.name}}
+      <span class="stop-buses-count">·{{info.buses.count}}条</span>
+    </view>
+    <view class="stop-distance">{{info.distance}}m</view>
+  </view>
+  <view class="stop-card-content">
+    <view style="padding: 20rpx 30rpx;">
+      <span class="bus-item" wx:for="{{info.buses.data}}" wx:for-index="bus_index" wx:for-item="bus_item" wx:key="*this">
+        {{bus_item}}
+      </span>
+    </view>
+    <!-- <view class="mask"></view> -->
+  </view>
+</navigator>

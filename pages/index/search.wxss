@@ -1,49 +1,37 @@
 /* pages/index/search.wxss */
-.header {
-  background: #ffffff;
-  margin: 0;
-  padding: 18rpx 24rpx 22rpx;
-  display: flex;
-  justify-content: space-between;
-  position:fixed;
-  top: 0;
-  height: 108rpx;
-  width: 100%;
-  box-sizing: border-box;
-  z-index: 999;
-  box-shadow: 0 6rpx 10rpx hsla(220,4%,58%,.1);
-}
 
 .search-bar {
-  background: #f4f4f4;
-  height: 68rpx;
-  padding: 0 25rpx;
-  width: 100%;
-  border-radius: 50rpx;
+  flex: 1;
+  display: flex;
+  background: #ffffff;
+  height: 84rpx;
+  padding: 0 25rpx 0 25rpx;
+  border-radius: 10rpx;
+  align-items: center;
+  /* border: 1px solid #f4f4f4; */
 }
 
-/* LOCATION CARD */
+/* CARD */
 
-.location-bar {
-  margin: 0 30rpx;
-  margin-top: 30rpx; 
+.addon-card {
+  padding: 30rpx 40rpx;
   background: #fefefe;
   font-size: 28rpx;
 }
 
-.location-bar-header {
+.addon-card-header {
   display: flex;
   height: 50rpx;
   margin-bottom: 20rpx;
   align-items: center;
 }
 
-.location-bar .location-title {
+.addon-card .title {
   display: flex;
   align-items: center;
 }
 
-.location-bar .location-text {
+.addon-card .desc {
   display: inline-block;
   color: #bbbec4;
   margin-left: 30rpx;
@@ -54,11 +42,15 @@
   overflow: hidden;
 }
 
-.location-bar .loc-img {
+.addon-card .loc-img {
   width: 100%;
-  height: 300rpx;
+  height: 240rpx;
   opacity: .6;
   border-radius: 16rpx;
+}
+
+.addon-card .badge {
+  display: inline-block;
 }
 
 /* SEARCH RESULT */
@@ -66,7 +58,25 @@
   display: flex;
   height: 120rpx;
   align-items: center;
-  border-bottom: 1px solid #eeeeee;
+  margin: 16rpx 40rpx;
   padding: 0 30rpx;
   color: #666666;
+  background-color: #ffffff;
+  border: 1px solid #eeeeee;
+}
+
+.accu-search-item {
+  background-color: #FFFDF5;
+}
+
+.search-item .line-name {
+  font-size: 40rpx;
+  color: #303133;
+}
+
+.search-item .line-dir {
+  font-size: 30rpx;
+  flex: 1;
+  text-align: right;
+  color: #909399;
 }

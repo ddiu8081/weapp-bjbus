@@ -1,0 +1,23 @@
+/* pages/components/error-page/index.wxss */
+.container-func {
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+}
+
+.container-func .img {
+  width: 270rpx;
+  height: 192rpx;
+}
+
+.container-func .text {
+  font-size: 28rpx;
+  color: #bbbec4;
+  margin: 30rpx 0;
+}

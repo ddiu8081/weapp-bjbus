@@ -47,6 +47,7 @@
 
 .stop-item .stop-name-item {
   text-align: center;
+  font-size: 32rpx;
 }
 
 .stop-item .stop-name-item .stop-item-id {

@@ -1,28 +1,38 @@
 <!--pages/index/search.wxml-->
-<view class="header">
-  <input bindinput="handleInput" confirm-type="search" class="search-bar" placeholder="搜索线路" focus placeholder-style="color:#cccccc"/>
+<view class="fixed">
+  <view class="search">
+    <input bindinput="handleInput" confirm-type="search" class="search-bar" placeholder="搜索线路" focus placeholder-style="color:#cccccc"/>
+  </view>
 </view>
-<view class="placeholder"></view>
-<view class="container container-mt container-white">
-  <view class="result-div" wx:if="{{searchList.length > 0}}">
-    <block wx:for="{{searchList}}" wx:for-index="searchIndex" wx:for-item="searchItem" wx:key="id">
-      <navigator url="../bus/detail?lineid={{searchItem.id}}" class="search-item">
-        {{searchItem.linename}}
+<view class="container" style="padding-top: 144rpx;">
+  <view class="result-div" wx:if="{{accuSearchList.length + normalSearchList.length > 0}}">
+    <block wx:for="{{accuSearchList}}" wx:for-index="accuSearchIndex" wx:for-item="accuSearchItem" wx:key="id">
+      <navigator url="../bus/detail?id={{accuSearchItem.id}}&stop=1" class="search-item accu-search-item">
+        <span class="line-name">{{accuSearchItem.name}}</span>
+        <span class="line-dir">{{accuSearchItem.dir}}</span>
+      </navigator>
+    </block>
+    <block wx:for="{{normalSearchList}}" wx:for-index="normalSearchIndex" wx:for-item="normalSearchItem" wx:key="id">
+      <navigator url="../bus/detail?id={{normalSearchItem.id}}&stop=2" class="search-item">
+        <span class="line-name">{{normalSearchItem.name}}</span>
+        <span class="line-dir">{{normalSearchItem.dir}}</span>
       </navigator>
     </block>
   </view>
-  <view class="location-bar" bindtap="setLocation" wx:else>
-    <view class="location-bar-header">
-      <view class="location-title">
-        <span class="title-square"></span>
-        <text>按位置搜索</text>
+  <block wx:else>
+    <view class="addon-card" bindtap="setLocation">
+      <view class="addon-card-header">
+        <view class="title">
+          <span class="title-square"></span>
+          <text>按位置搜索</text>
+        </view>
+        <view class="desc">
+          {{location.address}}
+        </view>
       </view>
-      <view class="location-text">
-        {{props.data.location.address}}
+      <view class="addon-card-body">
+        <image class="loc-img" src="http://api.map.baidu.com/staticimage/v2?ak=8apGt7pBDKC44iShsHzwKGT2x8dBq14y&center={{location.lng + ',' + location.lat}}&width=800&height=400&zoom=18&coordtype=gcj02ll&copyright=1&dpiType=ph" mode="aspectFill"></image>
       </view>
     </view>
-    <view>
-      <image class="loc-img" src="http://api.map.baidu.com/staticimage/v2?ak=8apGt7pBDKC44iShsHzwKGT2x8dBq14y&center={{props.data.location.lng + ',' + props.data.location.lat}}&width=800&height=800&zoom=18&coordtype=gcj02ll&copyright=1&dpiType=ph" mode="aspectFill"></image>
-    </view>
-  </view>
+  </block>
 </view>

@@ -1,32 +1,37 @@
 <!--index.wxml-->
-<view class="header">
-  <!-- <open-data type="userAvatarUrl" class="userAvatar"></open-data> -->
-  <navigator url="search" class="search-bar">
-    <text>搜索位置、线路</text>
-    <i-icon type="search" size="20" color="#80848f"/>
-  </navigator>
+<view class="fixed">
+  <view class="search">
+    <view class="search-bar" catchtap="navToSearch">
+      <!-- <open-data class="userAvatar" mode="aspectFit" type="userAvatarUrl"></open-data> -->
+      <view class="bar-content">
+        <span wx:if="{{location.isSet}}" catchtap="resetLocation" class="loc-label">
+          <i-icon type="coordinates_fill" size="18" color="#909399"/>
+          <span class="loc-text">{{location.address}}</span>
+          <i-icon type="close" size="12" color="#A28D4E" style="margin-left:10rpx;"/>
+        </span>
+        <text wx:else>输入线路进行搜索</text>
+      </view>
+      <i-icon type="search" size="20" color="#80848f"/>
+    </view>
+  </view>
+  <view class="nav-bar">
+    <view bindtap="changeTab" data-index="1" class="nav-bar-item {{thisTab == 1 ? 'active' : ''}}">站点</view>
+    <view bindtap="changeTab" data-index="2" class="nav-bar-item {{thisTab == 2 ? 'active' : ''}}">历史</view>
+    <view bindtap="changeTab" data-index="3" class="nav-bar-item {{thisTab == 3 ? 'active' : ''}}">收藏</view>
+  </view>
 </view>
-<view class="container container-mt" wx:if="{{near.success}}">
+
+<view wx:if="{{stopList.success}}" class="pt240">
   <i-notice-bar icon="systemprompt" color="#80848f" loop closable wx:if="{{notice}}">
     {{notice}}
   </i-notice-bar>
-  <view class="location-bar" wx:if="{{props.data.location.isSet}}">
-    <i-icon type="coordinates_fill" size="18" color="#fff"/>
-    <text>按位置搜索：{{props.data.location.address}}</text>
-    <i-icon type="close" color="#fff" size="18" bindtap="resetLocation"/>
+  <view class="stop-list-container">
+    <block wx:for="{{stopList.pois}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="name">
+      <stop-item info="{{stop_item}}"></stop-item>
+    </block>
   </view>
-  <block wx:for="{{near.pois}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="name">
-    <stop-item info="{{stop_item}}" wx:if="{{stop_index == 0}}">
-      <first-buses count="{{stop_item.buses.count}}" list="{{first_buses}}"></first-buses>
-    </stop-item>
-    <stop-item info="{{stop_item}}" wx:else>
-      <view style="padding: 20rpx 30rpx;">
-        <span class="bus-item" wx:for="{{stop_item.buses.data}}" wx:for-index="bus_index" wx:for-item="bus_item" wx:key="*this">
-          {{bus_item}}
-        </span>
-      </view>
-      <view class="mask"></view>
-    </stop-item>
-  </block>
 </view>
-<error-page i-class="container-mt" errMsg="{{near.errMsg}}" wx:else></error-page>
+<block wx:else>
+  <func-page i-class="pt240" msg="{{stopList.errMsg}}" wx:if="{{stopList.errMsg}}"></func-page>
+  <skeleton-page i-class="pt240" wx:else></skeleton-page>
+</block>

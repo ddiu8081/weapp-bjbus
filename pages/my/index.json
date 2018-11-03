@@ -1,9 +1,0 @@
-{
-  "usingComponents": {
-    "i-cell-group": "../../dist/cell-group/index",
-    "i-cell": "../../dist/cell/index",
-    "i-badge": "../../dist/badge/index"
-  },
-  "navigationBarTitleText": "",
-  "enablePullDownRefresh": false
-}

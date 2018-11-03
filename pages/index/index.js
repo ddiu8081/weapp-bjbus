@@ -1,17 +1,11 @@
-//index.js
-var app = getApp();
-var observer = require('../../libs/observer').observer;
+import store from '../../store'
+import create from '../../libs/store/create'
 
-Page(observer({
-  props: {
-    data: require('../../stores/globalData').default,
-  },
+var app = getApp();
+
+create(store, ({
   data: {
-    success: true,
-    notice: '',
-    first_stop: '',
-    near: {},
-    first_buses: {}
+    thisTab: 1
   },
   onLoad: function () {
     var that = this;
@@ -24,8 +18,8 @@ Page(observer({
     // clearTimeout(timer);
   },
   onPullDownRefresh: function () {
-    if (this.props.data.location.isSet) {
-      that.initStopList();
+    if (this.store.data.location.isSet) {
+      this.initStopList();
     } else {
       this.resetLocation();
     }
@@ -43,21 +37,31 @@ Page(observer({
       url: app.globalData.headUrl + '/bjbus/app/notice',
     }).then(res => {
       console.log(res.data);
-      that.setData({
+      that.update({
         notice: res.data.notice
       })
     });
   },
-  resetLocation: function() {
+  changeTab: function (event) {
+    this.setData({
+      thisTab: event.currentTarget.dataset.index
+    })
+  },
+  navToSearch: function () {
+    wx.navigateTo({
+      url: 'search'
+    });
+  },
+  resetLocation: function () {
     var that = this;
-    that.props.data.resetLoc(function () {
+    that.store.resetLoc(function () {
       that.initStopList();
     });
   },
   initStopList: function() {
     var that = this;
-    var latitude = that.props.data.location.lat; // 纬度
-    var longitude = that.props.data.location.lng; // 经度
+    var latitude = that.store.data.location.lat; // 纬度
+    var longitude = that.store.data.location.lng; // 经度
 
     wx.showNavigationBarLoading();
     wx.pro.request({
@@ -68,29 +72,35 @@ Page(observer({
     }).then(res => {
       console.log(res.data);
       if (!res.data.success) {
-        that.setData({
-          near: res.data
+        that.update({
+          stopList: res.data
         })
         return;
       }
-      var first_buses_array = res.data.pois[0].buses;
-      var buses_count = first_buses_array.count;
-      var buses_page = parseInt((buses_count - 1) / 5) + 1;
-      var first_buses = new Array();
-      for (var i = 0; i < buses_page; i++) {
-        var left = i == (buses_page - 1) ? buses_count - 5 * i : 5;
-        first_buses[i] = new Array();
-        for (var j = 0; j < left; j++) {
-          first_buses[i][j] = {};
-          first_buses[i][j]['name'] = first_buses_array.data[i * 5 + j];
-        }
-      }
-      that.setData({
-        success: true,
-        first_stop: res.data.pois[0].name,
-        near: res.data,
-        first_buses: first_buses
-      })
+      var bus_array = res.data.pois[0].buses.data;
+      that.update({
+        hasLoaded: true,
+        stopList: res.data,
+        nearBusArray: bus_array
+      });
+      // var count = bus_array.count;
+      // var buses_page = parseInt((count - 1) / 5) + 1;
+      // var first_buses = new Array();
+      // for (var i = 0; i < buses_page; i++) {
+      //   var left = i == (buses_page - 1) ? count - 5 * i : 5;
+      //   first_buses[i] = new Array();
+      //   for (var j = 0; j < left; j++) {
+      //     first_buses[i][j] = {};
+      //     first_buses[i][j]['name'] = bus_array.data[i * 5 + j];
+      //     console.log(app.getLineId(bus_array.data[i * 5 + j]));
+      //   }
+      // }
+      // that.setData({
+      //   success: true,
+      //   first_stop: res.data.pois[0].name,
+      //   stopList: res.data,
+      //   first_buses: first_buses
+      // })
       wx.hideNavigationBarLoading();
       // wx.startPullDownRefresh();
     });

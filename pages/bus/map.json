@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "bus-info-bar": "../components/bus-info-bar/index"
+    "bus-info-bar": "../../components/bus-info-bar/index"
   },
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false

@@ -1,15 +1,18 @@
-// pages/index/search.js
-var observer = require('../../libs/observer').observer;
+import store from '../../store'
+import create from '../../libs/store/create'
 var app = getApp();
 
-Page(observer({
-  props: {
-    data: require('../../stores/globalData').default,
-  },
+create(store, ({
   data: {
-    searchList: []
+    accuSearchList: [],
+    normalSearchList: [],
+    lastSeen1: [{
+      line:1004,
+      stop:10
+    }]
   },
   onLoad: function (options) {
+    console.log(this.store.data.thisBus)
   },
   onShow: function () {
   },
@@ -19,12 +22,14 @@ Page(observer({
     .then(res => {
       var pages = getCurrentPages(); // 当前页面
       var indexPage = pages[pages.length - 2]; // 前一个页面
-      that.props.data.location = {
-        isSet: true,
-        lat: res.latitude,
-        lng: res.longitude,
-        address: res.name
-      };
+      that.update({
+        location: {
+          isSet: true,
+          lat: res.latitude,
+          lng: res.longitude,
+          address: res.name
+        }
+      })
       indexPage.initStopList();
       wx.navigateBack({
         delta: 1
@@ -37,23 +42,36 @@ Page(observer({
       this.search(str);
     } else {
       this.setData({
-        searchList: []
+        accuSearchList: [],
+        normalSearchList: []
       });
     }
   },
   search: function (str) {
     var count = app.globalData.busList.count;
     var busList = app.globalData.busList.lines;
-    var arr = [];
+    var accuArr = [];
+    var normalArr = [];
 
     for (var i = 0; i < count; i++) {
       var thisBus = busList[i];
       if (thisBus.status == "0" && thisBus.linename.indexOf(str) >= 0) {
-        arr.push(thisBus);
+        var lineNames = thisBus.linename.split("(", 2);
+        var lineInfo = {
+          id: thisBus.id,
+          name: lineNames[0],
+          dir: lineNames[1].slice(0,-1)
+        }
+        if (str == lineNames[0]) {
+          accuArr.push(lineInfo);
+        } else {
+          normalArr.push(lineInfo);
+        }
       }
     }
     this.setData({
-      searchList: arr
+      accuSearchList: accuArr,
+      normalSearchList: normalArr
     });
   }
 }))

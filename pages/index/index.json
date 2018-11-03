@@ -1,9 +1,10 @@
 {
   "usingComponents": {
-    "i-icon": "../../dist/icon/index",
-    "i-notice-bar": "../../dist/notice-bar/index",
-    "stop-item": "../components/stop-item/index",
-    "first-buses": "../components/first-buses/index",
-    "error-page": "../components/error-page/index"
+    "i-icon": "/dist/icon/index",
+    "i-notice-bar": "/dist/notice-bar/index",
+    "stop-item": "/components/stop-item/index",
+    "swiper-view": "/components/swiper-view/index",
+    "func-page": "/components/func-page/index",
+    "skeleton-page": "/components/skeleton-page/index"
   }
 }

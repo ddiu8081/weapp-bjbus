@@ -1,0 +1,30 @@
+<!--pages/components/error-page/index.wxml-->
+<view class="container-func-sk i-class">
+  <view class="sk-stop-item">
+    <view class="sk-title"></view>
+    <view class="sk-title right"></view>
+    <view class="sk-content">
+      <view class="sk-content-text"></view>
+      <view class="sk-content-text"></view>
+      <view class="sk-content-text short"></view>
+    </view>
+  </view>
+  <view class="sk-stop-item">
+    <view class="sk-title"></view>
+    <view class="sk-title right"></view>
+    <view class="sk-content">
+      <view class="sk-content-text"></view>
+      <view class="sk-content-text short"></view>
+    </view>
+  </view>
+  <view class="sk-stop-item">
+    <view class="sk-title"></view>
+    <view class="sk-title right"></view>
+    <view class="sk-content">
+      <view class="sk-content-text"></view>
+      <view class="sk-content-text"></view>
+      <view class="sk-content-text"></view>
+      <view class="sk-content-text short"></view>
+    </view>
+  </view>
+</view>

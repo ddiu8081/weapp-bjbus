@@ -1,80 +1,60 @@
 /* @import "../../libs/animate.wxss"; */
-.header {
-  background: #ffffff;
-  margin: 0;
-  padding: 18rpx 24rpx 22rpx;
-  display: flex;
-  align-items: center;
-  position:fixed;
-  top: 0;
-  height: 108rpx;
-  width: 100%;
-  box-sizing: border-box;
-  z-index: 999;
-  box-shadow: 0 6rpx 10rpx hsla(220,4%,58%,.1);
-}
 
 .search-bar {
   flex: 1;
   display: flex;
-  background: #f4f4f4;
-  height: 68rpx;
-  padding: 0 25rpx;
-  border-radius: 50rpx;
+  background: #ffffff;
+  height: 84rpx;
+  padding: 0 25rpx 0 25rpx;
+  border-radius: 10rpx;
   align-items: center;
+  /* border: 1px solid #f4f4f4; */
 }
 
-.search-bar text {
+.search-bar .bar-content {
   flex: 1;
+  font-size: 32rpx;
   color: #cccccc;
 }
 
+/* .userAvatar {
+  height: 48rpx;
+  width: 48rpx;
+  padding-right: 16rpx;
+  margin-right: 16rpx;
+  border-right: 1px solid #eeeeee;
+} */
+
 .userAvatar {
-  height: 68rpx;
-  width: 68rpx;
-  border-radius: 34rpx;
-  margin-right: 10rpx;
-  opacity: .8;
+  height: 48rpx;
+  width: 48rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 24rpx;
 }
 
-/* LOCATION BAR */
-.location-bar {
-  display: flex;
-  height: 68rpx;
+.loc-label {
+  max-width: 400rpx;
+  height: 60rpx;
+  display: inline-flex;
+  padding: 0 16rpx;
   align-items: center;
-  padding: 0 30rpx;
-  font-size: 26rpx;
-  background-color: rgba(0,0,0,0.20); 
-  /* background-image: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%); */
+  font-size: 28rpx;
+  color: #A28D4E;
+  background-color: #FFF9E6;
+  border: 1px solid rgba(162, 141, 78, 0.25);
+  box-sizing: border-box;
 }
 
-.location-bar text {
-  color: #ffffff;
-  flex: 1;
+.loc-label .loc-text {
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-/* STOP CARD */
-
-.bus-item {
   font-size: 24rpx;
-  margin-right: 12rpx;
-  background-color: hsla(220,4%,58%,.1);
-  display: inline-block;
-  padding: 5rpx 10rpx;
-  color: #909399;
-  border-radius: 4px;
-  box-sizing: border-box;
-  /* border: 1rpx solid hsla(220,4%,58%,.2); */
-  white-space: nowrap;
 }
 
-.mask {
-  width:100%;
-	position: absolute;
-	top:0;
-	height: 100%;
-  background-image: linear-gradient(90deg,hsla(255,0%,100%,0) 80%,#fff 100%);
+.stop-list-container {
+  margin: 28rpx 40rpx;
+  /* grid-gap: 30rpx; */
+  /* grid-template-columns: 320rpx 320rpx; */
 }

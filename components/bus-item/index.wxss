@@ -1,0 +1,105 @@
+/* pages/components/bus-item/bus-item.wxss */
+.bus-item-card {
+  display: flex;
+  box-sizing: border-box;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 144rpx;
+  align-items: center;
+  background-color: #f8f8f9;
+  border: 1px solid #eeeeee;
+  border-radius: 16rpx;
+  /* border-left: 2px solid #87d068; */
+}
+
+.bus-item-card .businfo {
+  margin-left: 20rpx;
+  height: 100%;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+}
+
+.bus-item-card .businfo .busname {
+  display: inline-block;
+  color: #ffffff;
+  background-color: #74b9ff;
+  padding: 0rpx 10rpx;
+  border-radius: 8rpx;
+  margin-bottom: 6rpx;
+}
+
+.bus-item-card .businfo .direction {
+  color: #bbbec4;
+  font-size: 22rpx;
+}
+
+.bus-item-card .bustime {
+  position: relative;
+  display: flex;
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.bus-item-card .bustime .bustime-item {
+  display: inline-block;
+  text-align: right;
+}
+
+.bus-item-card .bustime .bustime-item-2 {
+  margin-left: 20rpx;
+  padding-left: 20rpx;
+  border-left: 1rpx solid hsla(220,4%,58%,.2);
+  opacity: .5;
+}
+
+.bus-item-card .bustime .bustime-item-3 {
+  position: relative;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  margin-left: 20rpx;
+  padding-right: 25rpx;
+  padding-left: 25rpx;
+  border-left: 1rpx solid hsla(220,4%,58%,.2);
+}
+
+.bus-item-card .bustime .bustime-item-3 .icon {
+  height: 36rpx;
+  width: 36rpx;
+}
+
+.bus-item-card .bustime .poi {
+  font-size: 32rpx;
+}
+
+.bus-item-detail .bustime .poi-blue {
+  color: #6190e8;
+}
+
+.bus-item-detail .bustime .poi-aqua {
+  color: #41cac0;
+}
+
+.bus-item-detail .bustime .poi-green {
+  color: #87d068;
+}
+
+.bus-item-detail .bustime .poi-yellow {
+  color: #E6A23C;
+}
+
+.bus-item-detail .bustime .poi-grey {
+  color: #909399;
+}
+
+.bus-item-detail .bustime .poi-disabled {
+  color: #bbbec4;
+}
+
+.bus-item-card .bustime .distance {
+  color: #bbbec4;
+  font-size: 22rpx;
+}

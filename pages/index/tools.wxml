@@ -1,0 +1,26 @@
+<view class="tools-card">
+  <view bindtap="showSubwayMap" class="tools-card-item">
+    <image mode="aspectFit" src="/res/icon/tools/subway.png"></image>
+    <span>地铁图</span>
+  </view>
+</view>
+<view class="tools-card">
+  <navigator url="/pages/my/more/faq" class="tools-card-item">
+    <image mode="aspectFit" src="/res/icon/tools/faq.png"></image>
+    <span>常见问题</span>
+  </navigator>
+  <navigator url="/pages/my/more/changelog" class="tools-card-item">
+    <image mode="aspectFit" src="/res/icon/tools/bulb.png">
+      <span class="dot" wx:if="{{userVer != update}}"></span>
+    </image>
+    <span>更新日志</span>
+  </navigator>
+  <button class="clear-btn tools-card-item" plain="true" open-type="feedback">
+    <image mode="aspectFit" src="/res/icon/tools/flag.png"></image>
+    <span>意见反馈</span>
+  </button>
+  <navigator url="/pages/my/more/support" class="tools-card-item">
+    <image mode="aspectFit" src="/res/icon/tools/like.png"></image>
+    <span>支持作者</span>
+  </navigator>
+</view>

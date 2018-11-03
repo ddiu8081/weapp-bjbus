@@ -1,0 +1,3 @@
+.bus-item {
+  margin: 16rpx 20rpx;
+}
