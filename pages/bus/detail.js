@@ -74,7 +74,10 @@ create(store, ({
           var thisBus = lineTime[i];
           var suffix = thisBus.nsrt == -1 ? "" : "m";
           var stopId = thisBus.nsn + suffix;
-          buses_list[stopId] = thisBus;
+          if (!buses_list[stopId]) {
+            buses_list[stopId] = [];
+          }
+          buses_list[stopId].push(thisBus);
         }
         that.update({
           lineTime: lineTime,

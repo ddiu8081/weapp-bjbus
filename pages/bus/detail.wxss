@@ -74,8 +74,27 @@
 }
 
 .bus-icon .bus-icon-img {
+  position: relative;
   width: 46rpx;
   height: 46rpx;
+  overflow: visible;
+}
+
+.bus-icon .bus-icon-img .dot {
+  position: absolute;
+  transform-origin: 0 center;
+  font-size: 18rpx;
+  top: -4rpx;
+  right: -4rpx;
+  height: 24rpx;
+  width: 24rpx;
+  line-height: 24rpx;
+  text-align: center;
+  border-radius: 100%;
+  color: #303133;
+  background-color: #FFDD79;
+  border:1px solid #909399;
+  z-index: 10;
 }
 
 .bus-icon-next {

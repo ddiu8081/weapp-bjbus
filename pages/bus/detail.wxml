@@ -29,13 +29,17 @@
       <block wx:for="{{lineDetail.stations}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="id">
         <view id="{{'stop_' + stop_item.id + 'm'}}" class="stop-item">
           <view class="bus-icon {{detail.getStopItemLineClass(stopRight, stop_item.id + 'm', bus_detail.stop_id)}}">
-            <image class="bus-icon-img" wx:if="{{buses_list[stop_item.id + 'm']}}" src="/res/icon/bus.png"></image>
+            <image class="bus-icon-img" wx:if="{{buses_list[stop_item.id + 'm']}}" src="/res/icon/bus.png">
+              <span wx:if="{{buses_list[stop_item.id + 'm'].length > 1}}" class="dot">{{buses_list[stop_item.id + 'm'].length}}</span>
+            </image>
           </view>
           <view class="stop-name-item"></view>
         </view>
         <view id="{{'stop_' + stop_item.id}}" class="stop-item">
           <view class="bus-icon {{detail.getStopItemLineClass(stopRight, stop_item.id, bus_detail.stop_id)}}">
-            <image class="bus-icon-img" wx:if="{{buses_list[stop_item.id]}}" src="/res/icon/bus.png"></image>
+            <image class="bus-icon-img" wx:if="{{buses_list[stop_item.id]}}" src="/res/icon/bus.png">
+              <span wx:if="{{buses_list[stop_item.id].length > 1}}" class="dot">{{buses_list[stop_item.id].length}}</span>
+            </image>
           </view>
           <view class="stop-name-item stop {{(stopRight && stop_item.id == bus_detail.stop_id) ? 'this-stop' : ''}}">
             <!-- <view class="stop-item-id">{{stop_item.id}}</view> -->
