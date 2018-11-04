@@ -1,18 +1,34 @@
 /* pages/components/bus-info-bar/index.wxss */
 .info-bar {
   display: flex;
-  height: 120rpx;
-  background-color: #F2F6FC;
-  padding: 0 30rpx;
+  height: 180rpx;
+  background-color: #ffffff;
+  padding: 0 40rpx;
   align-items: center;
 }
 .info {
-  font-size: 26rpx;
-  color: #909399;
   flex: 1;
 }
+.info .line-name {
+  display: block;
+  font-size: 52rpx;
+  color: #303133;
+  font-weight: bold;
+}
+.info .line-dir {
+  font-size: 28rpx;
+  color: #909399;
+}
 .icon {
-  width: 50rpx;
-  height: 50rpx;
-  margin-right: 10rpx;
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.meta-bar {
+  height: 72rpx;
+  line-height: 72rpx;
+  background-color: #F2F6FC;
+  padding: 0 40rpx;
+  font-size: 26rpx;
+  color: #909399;
 }

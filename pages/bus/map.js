@@ -46,7 +46,7 @@ Page({
             points: res.data.coord,
             arrowLine: true,
             color: "#5cadff",
-            width: 5
+            width: 7
           }]
         });
         callback(stopMarks);
@@ -84,8 +84,8 @@ Page({
           latitude: item.latitude,
           longitude: item.longitude,
           zIndex: 0,
-          width: 15,
-          height: 15,
+          width: 18,
+          height: 18,
           anchor: { x: .5, y: .5 }
         });
       }
@@ -100,8 +100,8 @@ Page({
           latitude: item.latitude,
           longitude: item.longitude,
           zIndex: 1,
-          width: 22,
-          height: 22,
+          width: 24,
+          height: 24,
           anchor: { x: .5, y: .5 }
         });
       }

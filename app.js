@@ -37,10 +37,9 @@ App({
         count: res.data.updateNum,
         lines: res.data.lines.line,
       }
-      console.log(this.getLineId("特8外"));
     })
   },
-  getLineId: function (str) {
+  getLineId: function (lineName) {
     var that = this;
     var count = that.globalData.busList.count;
     var busList = that.globalData.busList.lines;
@@ -48,11 +47,11 @@ App({
 
     for (var i = 0; i < count; i++) {
       var thisBus = busList[i];
-      if (thisBus.status == "0" && str == thisBus.linename.split("(", 2)[0]) {
+      if (thisBus.status == "0" && lineName == thisBus.linename.split("(", 2)[0]) {
         arr.push(thisBus);
         if (i < count - 1) {
           var nextBus = busList[i + 1];
-          if (nextBus.status == "0" && str == nextBus.linename.split("(", 2)[0]) {
+          if (nextBus.status == "0" && lineName == nextBus.linename.split("(", 2)[0]) {
             arr.push(nextBus);
           }
         }
@@ -61,5 +60,17 @@ App({
     }
 
     return arr;
+  },
+  getOppositeId: function (lineName, thisId) {
+    var lineArr = this.getLineId(lineName);
+    if (lineArr.length == 1) {
+      return "";
+    } else {
+      if (lineArr[0].id == thisId) {
+        return lineArr[1].id;
+      } else {
+        return lineArr[0].id;
+      }
+    }
   }
 })

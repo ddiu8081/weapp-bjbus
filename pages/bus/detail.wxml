@@ -1,13 +1,32 @@
 <!--pages/bus/detail.wxml-->
 <view class="container">
-  <bus-info-bar info="{{str}}"/>
-  <navigator url="map?lineid={{str.lineid}}">
+  <bus-info-bar info="{{lineDetail}}"/>
+  <!-- <navigator url="map?lineid={{lineDetail.lineid}}">
     <button>在地图中显示</button>
-  </navigator>
+  </navigator> -->
+  <view class="bustime-card">
+    <view class="info">
+      <text class="toast">请选择候车站点</text>
+    </view>
+    <view class="control">
+      <view bindtap="changeDir" class="item">
+        <image mode="aspectFit" src="/res/icon/swap.png"></image>
+        <span>换向</span>
+      </view>
+      <navigator url="map?lineid={{lineDetail.lineid}}" class="item">
+        <image mode="aspectFit" src="/res/icon/earth.png"></image>
+        <span>地图视图</span>
+      </navigator>
+      <view class="item">
+        <image mode="aspectFit" src="/res/icon/curvilinear.png"></image>
+        <span>同站线路</span>
+      </view>
+    </view>
+  </view>
 
-  <scroll-view scroll-x scroll-into-view="{{'stop_' + (bus_detail.stop_id - 5)}}" scroll-with-animation="true" wx:if="{{str.stations.length > 0}}">
+  <scroll-view scroll-x scroll-into-view="{{'stop_' + (bus_detail.stop_id - 5)}}" scroll-with-animation="true" wx:if="{{lineDetail.stations.length > 0}}">
     <view class="stop-list">
-      <block wx:for="{{str.stations}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="id">
+      <block wx:for="{{lineDetail.stations}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="id">
         <view id="{{'stop_' + stop_item.id + 'm'}}" class="stop-item">
           <view class="bus-icon {{detail.getStopItemLineClass(stopRight, stop_item.id + 'm', bus_detail.stop_id)}}">
             <image wx:if="{{buses_list[stop_item.id + 'm']}}" src="./ico.png" style="width:20px; height:20px;"></image>
@@ -18,12 +37,17 @@
           <view class="bus-icon {{detail.getStopItemLineClass(stopRight, stop_item.id, bus_detail.stop_id)}}">
             <image wx:if="{{buses_list[stop_item.id]}}" src="./ico.png" style="width:20px; height:20px;"></image>
           </view>
-          <view class="stop-name-item {{(stopRight && stop_item.id == bus_detail.stop_id) ? 'this-stop' : ''}}">
-            <view class="stop-item-id">{{stop_item.name}}</view>
-            <view class="stop-item-name">{{stop_item.no}}</view> 
+          <view class="stop-name-item stop {{(stopRight && stop_item.id == bus_detail.stop_id) ? 'this-stop' : ''}}">
+            <!-- <view class="stop-item-id">{{stop_item.id}}</view> -->
+            <view class="stop-item-name">{{stop_item.name}}</view> 
           </view>
         </view>
       </block>
+      <view class="stop-item">
+        <view class="bus-icon">
+        </view>
+        <view class="stop-name-item"></view>
+      </view>
     </view>
     
     

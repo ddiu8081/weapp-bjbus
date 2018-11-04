@@ -33,7 +33,7 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "实时",
+        "text": "实时公交",
         "iconPath": "res/icon/tab/stealth.png",
         "selectedIconPath": "res/icon/tab/stealth_fill.png"
       },

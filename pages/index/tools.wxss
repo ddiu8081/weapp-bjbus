@@ -26,8 +26,8 @@
 
 .tools-card .tools-card-item image {
   position: relative;
-  width: 72rpx;
-  height: 72rpx;
+  width: 64rpx;
+  height: 64rpx;
   margin-bottom: 8rpx;
 }
 

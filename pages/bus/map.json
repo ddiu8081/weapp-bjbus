@@ -3,5 +3,6 @@
     "bus-info-bar": "../../components/bus-info-bar/index"
   },
   "navigationBarTitleText": "",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": false,
+  "navigationBarBackgroundColor": "#ffffff"
 }

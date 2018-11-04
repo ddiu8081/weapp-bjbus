@@ -43,23 +43,23 @@ create(store, ({
   },
   fetchBusDetail: function () {
     var that = this;
-    wx.request({
+    wx.pro.request({
       url: app.globalData.headUrl + '/btic/detail',
       data: {
         'lineid': that.options.id
-      },
-      success: function (res) {
-        if (res.data.success) {
-          console.log(res.data);
-          that.setData({
-            str: res.data
-          });
-          wx.setNavigationBarTitle({
-            title: res.data.linename
-          });
-        }
       }
-    })
+    }).then(res => {
+      if (res.data.success) {
+        console.log(res.data);
+        that.setData({
+          lineDetail: res.data
+        });
+        // console.log(app.getLineId(res.data.linename));
+        // wx.setNavigationBarTitle({
+        //   title: res.data.linename
+        // });
+      }
+    });
   },
   fetchBusTime: function (options) {
     var that = this;
@@ -106,5 +106,19 @@ create(store, ({
         wx.stopPullDownRefresh();
       }
     });
+  },
+  changeDir: function () {
+    var thisData = this.data.lineDetail;
+    var oppositeId = app.getOppositeId(thisData.linename, thisData.lineid);
+    if (oppositeId == "") {
+      wx.showToast({
+        title: '本车单向运行',
+        icon: 'none'
+      })
+    } else {
+      wx.redirectTo({
+        url: 'detail?id=' + oppositeId + '&stop=1'
+      });
+    }
   }
 }));

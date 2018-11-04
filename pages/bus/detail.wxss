@@ -1,22 +1,57 @@
-/* pages/bus/detail.wxss */
-.stop-card {
+.bustime-card {
   background: #ffffff;
-  margin: 24rpx 30rpx;
-  /* border-radius: 8rpx; */
-  overflow:hidden;
-  border:1rpx solid #f0f0f0;
+  height: 368rpx;
+  margin: 32rpx 40rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+  border:1rpx solid #eeeeee;
   font-size: 28rpx;
 }
 
-.stop-card-header {
-  margin: 20rpx 30rpx;
+.bustime-card .info {
+  display: flex;
+  background: #ffffff;
+  height: 240rpx;
+  border-bottom: 1px solid #eeeeee;
+  align-items: center;
+  text-align: center;
 }
 
-.stop-card-content {
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  margin:20rpx 30rpx;
+.bustime-card .info .toast {
+  flex: 1;
+  font-size: 28rpx;
+  color: #c0c4cc;
+}
+
+.bustime-card .control {
+  display: flex;
+  background: #fbfbfb;
+  height: 128rpx;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  padding: 0 24rpx;
+}
+
+.bustime-card .control .item {
+  width: 140rpx;
+  padding: 12rpx 0;
+  border-radius: 8rpx;
+}
+
+.bustime-card .control .item:active {
+  opacity: 0.8;
+}
+
+.bustime-card .control .item image {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.bustime-card .control .item span {
+  display: block;
+  font-size: 20rpx;
+  color: #909399;
 }
 
 .stop-list {
@@ -24,36 +59,40 @@
   font-size: 32rpx;
   display: flex;
   justify-content: flex-start;
-  margin-top:50rpx;
+}
+
+.stop-list .stop-item {
+  width: 50rpx;
 }
 
 .bus-icon {
   width: 50rpx;
   height: 20rpx;
   text-align:center;
-  border-bottom: solid 6px #cccccc;
-  margin-bottom: 20rpx;
-  padding-bottom: 60rpx;
-  box-sizing: border-box;
+  border-bottom: solid 10rpx #dddddd;
 }
 
 .bus-icon-next {
-  border-bottom: solid 6px rgb(132, 187, 105);
-}
-
-.stop {
-  background: #666;
+  border-bottom: solid 10rpx #666666;
 }
 
 .stop-item .stop-name-item {
+  position: relative;
   text-align: center;
   font-size: 32rpx;
+  color: #515151;
+  margin-top: 20rpx;
 }
 
-.stop-item .stop-name-item .stop-item-id {
-  font-size: 28rpx;
-  margin-bottom: 10rpx;
-  opacity: .5;
+.stop-item .stop-name-item.stop::before {
+  content: "";
+  position: absolute;
+  width: 26rpx;
+  height: 26rpx;
+  border-radius: 50%;
+  background-color: #cccccc;
+  top: -38rpx;
+  left: 12rpx;
 }
 
 .stop-item .this-stop {
@@ -72,6 +111,7 @@
   overflow:hidden;
   border:1rpx solid #f0f0f0;
   font-size: 28rpx;
+  border-radius: 50%;
 }
 
 .stop-card-header {
