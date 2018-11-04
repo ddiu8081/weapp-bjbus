@@ -1,4 +1,40 @@
 /* pages/stop/detail.wxss */
+.info-bar {
+  display: flex;
+  height: 180rpx;
+  background-color: #ffffff;
+  padding: 0 40rpx;
+  align-items: center;
+}
+
+.info-bar .location-pic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 180rpx;
+  width: 100%;
+  opacity: 0.2;
+}
+
+.info-bar .icon {
+  width: 56rpx;
+  height: 56rpx;
+  z-index: 20;
+}
+.info {
+  flex: 1;
+  z-index: 20;
+}
+.info .stop-name {
+  display: block;
+  font-size: 52rpx;
+  color: #303133;
+}
+.info .stop-meta {
+  font-size: 28rpx;
+  color: #909399;
+}
+
 .location {
   width: 100%;
   height: 600rpx;

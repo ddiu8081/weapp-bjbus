@@ -14,9 +14,9 @@ Page({
     this.setData({
       options: options
     });
-    wx.setNavigationBarTitle({
-      title: options.name
-    });
+    // wx.setNavigationBarTitle({
+    //   title: options.name
+    // });
   },
   onReady: function () {
 

@@ -1,5 +1,11 @@
 {
   "usingComponents": {
+    "i-tabs": "../../dist/tabs/index",
+    "i-tab": "../../dist/tab/index",
+    "bus-info-bar": "../../components/bus-info-bar/index",
     "i-icon": "../../dist/icon/index"
-  }
+  },
+  "navigationBarTitleText": "",
+  "navigationBarBackgroundColor": "#ffffff",
+  "backgroundColor": "#ffffff"
 }

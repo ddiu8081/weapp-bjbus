@@ -67,9 +67,15 @@
 
 .bus-icon {
   width: 50rpx;
-  height: 20rpx;
-  text-align:center;
+  height: 50rpx;
+  text-align: center;
   border-bottom: solid 10rpx #dddddd;
+  padding: 16rpx 0;
+}
+
+.bus-icon .bus-icon-img {
+  width: 46rpx;
+  height: 46rpx;
 }
 
 .bus-icon-next {

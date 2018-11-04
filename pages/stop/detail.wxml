@@ -1,7 +1,14 @@
 <!--pages/stop/detail.wxml-->
-<!-- <image class="location" src="https://restapi.amap.com/v3/staticmap?location={{options.location}}&traffic=1&zoom=16&size=750*400&markers=large,,:{{options.location}}&key=35d1aca7ac6e921b16f5d3dcb3bad29b" mode="aspectFill"></image> -->
+<view class="info-bar">
+  <!-- <image class="location-pic" src="http://api.map.baidu.com/staticimage/v2?ak=8apGt7pBDKC44iShsHzwKGT2x8dBq14y&center={{index.getMapCenter(options.location)}}&markers={{options.location}}&width=800&height=800&zoom=18&coordtype=gcj02ll&copyright=1&dpiType=ph" mode="aspectFill"></image> -->
+  <!-- <image class="location-pic" src="https://restapi.amap.com/v3/staticmap?location={{options.location}}&traffic=1&zoom=16&size=750*400&markers=large,,:{{options.location}}&key=35d1aca7ac6e921b16f5d3dcb3bad29b" mode="aspectFill"></image> -->
+  <view class="info">
+    <span class="stop-name">{{options.name}}</span>
+    <span class="stop-meta">{{options.location}}</span>
+  </view>
+  <image bindtap="showMap" class="icon" src="/res/icon/map.png"></image>
+</view>
 <view class="container">
-  <image class="location" src="http://api.map.baidu.com/staticimage/v2?ak=8apGt7pBDKC44iShsHzwKGT2x8dBq14y&center={{index.getMapCenter(options.location)}}&markers={{options.location}}&width=800&height=800&zoom=18&coordtype=gcj02ll&copyright=1&dpiType=ph" mode="aspectFill"></image>
   <view bindtap="showMap" class="location-mask"></view>
   <view class="stop-card stop-detail-card">
     <view class="stop-card-content stop-card-content-first">

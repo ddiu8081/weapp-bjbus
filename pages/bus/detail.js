@@ -7,22 +7,17 @@ var timer;
 create(store, ({
   onLoad: function (options) {
     console.log(options);
-    this.update({
+    this.setData({
       thisBus: {
         id: options.id,
         stop: options.stop
-      },
-      lastSeen: [{
-        id: options.id,
-        stop: options.stop
-      }]
+      }
     });
+    this.fetchBusDetail();
   },
   onShow: function () {
     var that = this;
-    this.fetchBusDetail();
-    // this.fetchStopList(this.data.options);
-    // wx.startPullDownRefresh();
+    wx.startPullDownRefresh();
     wx.setStorage({
       key: 'lastSeen',
       data: that.store.data.thisBus,
@@ -39,14 +34,15 @@ create(store, ({
   //   clearTimeout(timer);
   // },
   onPullDownRefresh: function () {
-    this.fetchBusDetail(this.data.options);
+    this.fetchBusTime();
   },
   fetchBusDetail: function () {
+    wx.showNavigationBarLoading();
     var that = this;
     wx.pro.request({
       url: app.globalData.headUrl + '/btic/detail',
       data: {
-        'lineid': that.options.id
+        'lineid': that.data.thisBus.id
       }
     }).then(res => {
       if (res.data.success) {
@@ -54,58 +50,69 @@ create(store, ({
         that.setData({
           lineDetail: res.data
         });
-        // console.log(app.getLineId(res.data.linename));
-        // wx.setNavigationBarTitle({
-        //   title: res.data.linename
-        // });
+        wx.hideNavigationBarLoading();
+        // wx.startPullDownRefresh();
       }
     });
   },
-  fetchBusTime: function (options) {
+  fetchBusTime: function () {
     var that = this;
-    wx.showNavigationBarLoading();
+    // wx.showNavigationBarLoading();
+    console.log(that.data.thisBus);
     wx.pro.request({
       url: app.globalData.headUrl + '/btic/time',
       data: {
-        'lineid': busData.id,
-        'stopid': busData.stop
+        'lineid': that.data.thisBus.id,
+        'stopid': that.data.thisBus.stop
       },
     }).then(res => {
       console.log(res.data);
-      that.update({
-        lineTime: res.data
-      })
-    });
-    wx.request({
-      url: 'https://api.ddiu.site/bjbus/time',
-      data: {
-        'line': options.name,
-        'dir': options.direction,
-        'stop': options.stop
-      },
-      success: function (res) {
-        console.log(res.data);
-
+      if (res.data.success) {
+        var lineTime = res.data.bus
         var buses_list = {};
-        for (var i = 0; i < res.data.buses.length; i++) {
-          var this_poi = res.data.buses[i].poi;
-          buses_list[this_poi] = true;
+        for (var i = 0; i < lineTime.length; i++) {
+          var thisBus = lineTime[i];
+          var suffix = thisBus.nsrt == -1 ? "" : "m";
+          var stopId = thisBus.nsn + suffix;
+          buses_list[stopId] = thisBus;
         }
-        that.setData({
-          bus_detail: res.data,
-          buses_list: buses_list,
-          stopRight: res.data.first.poi != "单向停靠"
+        that.update({
+          lineTime: lineTime,
+          buses_list: buses_list
         });
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-          that.fetchBusDetail(that.data.options);
-          console.log(new Date());
-        }, 8000);
-
-        wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh();
       }
     });
+    // wx.request({
+    //   url: 'https://api.ddiu.site/bjbus/time',
+    //   data: {
+    //     'line': options.name,
+    //     'dir': options.direction,
+    //     'stop': options.stop
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data);
+
+    //     var buses_list = {};
+    //     for (var i = 0; i < res.data.buses.length; i++) {
+    //       var this_poi = res.data.buses[i].poi;
+    //       buses_list[this_poi] = true;
+    //     }
+    //     that.setData({
+    //       bus_detail: res.data,
+    //       buses_list: buses_list,
+    //       stopRight: res.data.first.poi != "单向停靠"
+    //     });
+    //     clearTimeout(timer);
+    //     timer = setTimeout(function () {
+    //       that.fetchBusDetail(that.data.options);
+    //       console.log(new Date());
+    //     }, 8000);
+
+    //     wx.hideNavigationBarLoading();
+    //     wx.stopPullDownRefresh();
+    //   }
+    // });
   },
   changeDir: function () {
     var thisData = this.data.lineDetail;
