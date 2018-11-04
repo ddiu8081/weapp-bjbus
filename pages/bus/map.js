@@ -35,9 +35,9 @@ Page({
     }).then(res => {
       if (res.data.success) {
         console.log(res.data);
-        wx.setNavigationBarTitle({
-          title: res.data.linename
-        });
+        // wx.setNavigationBarTitle({
+        //   title: res.data.linename
+        // });
         var stopMarks = that.getMarks(1, res.data.stations);
         that.setData({
           lineData: res.data,
