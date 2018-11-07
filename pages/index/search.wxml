@@ -7,13 +7,13 @@
 <view class="container" style="padding-top: 144rpx;">
   <view class="result-div" wx:if="{{accuSearchList.length + normalSearchList.length > 0}}">
     <block wx:for="{{accuSearchList}}" wx:for-index="accuSearchIndex" wx:for-item="accuSearchItem" wx:key="id">
-      <navigator url="../bus/detail?id={{accuSearchItem.id}}&stop=1" class="search-item accu-search-item">
+      <navigator url="../bus/detail?id={{accuSearchItem.id}}" class="search-item accu-search-item">
         <span class="line-name">{{accuSearchItem.name}}</span>
         <span class="line-dir">{{accuSearchItem.dir}}</span>
       </navigator>
     </block>
     <block wx:for="{{normalSearchList}}" wx:for-index="normalSearchIndex" wx:for-item="normalSearchItem" wx:key="id">
-      <navigator url="../bus/detail?id={{normalSearchItem.id}}&stop=2" class="search-item">
+      <navigator url="../bus/detail?id={{normalSearchItem.id}}" class="search-item">
         <span class="line-name">{{normalSearchItem.name}}</span>
         <span class="line-dir">{{normalSearchItem.dir}}</span>
       </navigator>

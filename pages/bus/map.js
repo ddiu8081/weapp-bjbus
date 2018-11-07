@@ -30,7 +30,7 @@ Page({
       url: app.globalData.headUrl + '/btic/detail',
       data: {
         'lineid': lineid,
-        'map': 'true'
+        'map': '1'
       }
     }).then(res => {
       if (res.data.success) {
@@ -59,7 +59,7 @@ Page({
       url: app.globalData.headUrl + '/btic/time',
       data: {
         'lineid': lineid,
-        'stopid': '10'
+        'stop': '10'
       }
     }).then(res => {
       if (res.data.success) {

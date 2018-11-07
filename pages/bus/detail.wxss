@@ -61,16 +61,31 @@
   justify-content: flex-start;
 }
 
+.popover {
+  position: absolute;
+  background-color: #ffffff;
+}
+
 .stop-list .stop-item {
   width: 50rpx;
 }
 
-.bus-icon {
+.stop-item .bus-icon {
   width: 50rpx;
   height: 50rpx;
   text-align: center;
   border-bottom: solid 10rpx #dddddd;
   padding: 16rpx 0;
+}
+
+.stop-item.bus-item-next .bus-icon::after {
+  content: "";
+  position: absolute;
+  width: 80rpx;
+  height: 10rpx;
+  top: 82rpx;
+  background-color: #AAB2BD;
+  /* border-bottom: solid 10rpx #666666; */
 }
 
 .bus-icon .bus-icon-img {
@@ -97,10 +112,6 @@
   z-index: 10;
 }
 
-.bus-icon-next {
-  border-bottom: solid 10rpx #666666;
-}
-
 .stop-item .stop-name-item {
   position: relative;
   text-align: center;
@@ -116,15 +127,25 @@
   height: 26rpx;
   border-radius: 50%;
   background-color: #cccccc;
-  top: -38rpx;
+  top: -37rpx;
   left: 12rpx;
 }
 
-.stop-item .this-stop {
-  color:#409EFF;
-  background:#fff;
-  padding:0 0 20rpx;
-  border-radius:10rpx;
+.stop-item.bus-item-next .stop-name-item.stop::before {
+  content: "";
+  position: absolute;
+  width: 26rpx;
+  height: 26rpx;
+  border-radius: 50%;
+  background-color: #FFDD79;
+  top: -37rpx;
+  left: 12rpx;
+}
+
+.stop-item .this-stop .stop-item-name {
+  color: #FCBB42;
+  background: #ffffff;
+  border-radius: 10rpx;
 }
 
 /* STOP CARD */

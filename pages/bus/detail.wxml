@@ -1,9 +1,7 @@
 <!--pages/bus/detail.wxml-->
 <view class="container">
   <bus-info-bar info="{{lineDetail}}"/>
-  <!-- <navigator url="map?lineid={{lineDetail.lineid}}">
-    <button>在地图中显示</button>
-  </navigator> -->
+  <view class="popover"></view>
   <view class="bustime-card">
     <view class="info">
       <text class="toast">请选择候车站点</text>
@@ -24,38 +22,37 @@
     </view>
   </view>
 
-  <scroll-view scroll-x scroll-into-view="{{'stop_' + (bus_detail.stop_id - 5)}}" scroll-with-animation="true" wx:if="{{lineDetail.stations.length > 0}}">
+  <scroll-view scroll-x scroll-into-view="{{'stop_' + (stop_id - 5)}}" scroll-with-animation="true" wx:if="{{lineDetail.stations.length > 0}}">
     <view class="stop-list">
       <block wx:for="{{lineDetail.stations}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="id">
-        <view id="{{'stop_' + stop_item.id + 'm'}}" class="stop-item">
-          <view class="bus-icon {{detail.getStopItemLineClass(stopRight, stop_item.id + 'm', bus_detail.stop_id)}}">
+        <view id="{{'stop_' + stop_item.id + 'm'}}" class="stop-item {{detail.getStopItemLineClass(stopSet, stop_item.id + 'm', stop_id)}}">
+          <view class="bus-icon">
             <image class="bus-icon-img" wx:if="{{buses_list[stop_item.id + 'm']}}" src="/res/icon/bus.png">
               <span wx:if="{{buses_list[stop_item.id + 'm'].length > 1}}" class="dot">{{buses_list[stop_item.id + 'm'].length}}</span>
             </image>
           </view>
           <view class="stop-name-item"></view>
         </view>
-        <view id="{{'stop_' + stop_item.id}}" class="stop-item">
-          <view class="bus-icon {{detail.getStopItemLineClass(stopRight, stop_item.id, bus_detail.stop_id)}}">
+        <view id="{{'stop_' + stop_item.id}}" class="stop-item {{detail.getStopItemLineClass(stopSet, stop_item.id, stop_id)}}">
+          <view class="bus-icon">
             <image class="bus-icon-img" wx:if="{{buses_list[stop_item.id]}}" src="/res/icon/bus.png">
               <span wx:if="{{buses_list[stop_item.id].length > 1}}" class="dot">{{buses_list[stop_item.id].length}}</span>
             </image>
           </view>
-          <view class="stop-name-item stop {{(stopRight && stop_item.id == bus_detail.stop_id) ? 'this-stop' : ''}}">
+          <view class="stop-name-item stop {{(stopSet && stop_item.id == stop_id) ? 'this-stop' : ''}}">
             <!-- <view class="stop-item-id">{{stop_item.id}}</view> -->
-            <view class="stop-item-name">{{stop_item.name}}</view> 
+            <view class="stop-item-name" bindtap="setStopId" data-id="{{stop_item.id}}">{{stop_item.name}}</view> 
           </view>
         </view>
       </block>
-      <view class="stop-item">
-        <view class="bus-icon">
+      <view class="stop-item" wx:if="{{!stopSet}}">
+        <view class="bus-icon"></view>
+        <view class="stop-name-item">
+          <view class="stop-item-name"></view> 
         </view>
-        <view class="stop-name-item"></view>
       </view>
     </view>
-    
-    
-    
+
     <!-- <view class="stop-item-outer" >
       <view class="stop-item">
         {{stop_item.id}} - 
@@ -67,9 +64,9 @@
 <wxs module="detail">
   var getStopItemLineClass = function (stopRight, this_stop_item, this_stop) {
     if (stopRight && this_stop_item == this_stop) {
-      return 'bus-icon-next';
+      return 'bus-item-next';
     } else if (stopRight && parseInt(this_stop_item) > parseInt(this_stop)) {
-      return 'bus-icon-next';
+      return 'bus-item-next';
     } else {
       return '';
     }

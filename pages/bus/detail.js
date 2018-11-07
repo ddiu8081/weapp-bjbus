@@ -7,7 +7,12 @@ var timer;
 create(store, ({
   onLoad: function (options) {
     console.log(options);
+    var stopSet = false;
+    if (options.stop) {
+      stopSet = true;
+    }
     this.setData({
+      stopSet: stopSet,
       thisBus: {
         id: options.id,
         stop: options.stop
@@ -63,7 +68,7 @@ create(store, ({
       url: app.globalData.headUrl + '/btic/time',
       data: {
         'lineid': that.data.thisBus.id,
-        'stopid': that.data.thisBus.stop
+        'stop': that.data.thisBus.stop
       },
     }).then(res => {
       console.log(res.data);
@@ -80,6 +85,7 @@ create(store, ({
           buses_list[stopId].push(thisBus);
         }
         that.update({
+          stop_id: res.data.stopid,
           lineTime: lineTime,
           buses_list: buses_list
         });
@@ -130,5 +136,16 @@ create(store, ({
         url: 'detail?id=' + oppositeId + '&stop=1'
       });
     }
+  },
+  setStopId: function (event) {
+    var that = this;
+    this.setData({
+      stopSet: true,
+      thisBus: {
+        id: that.data.thisBus.id,
+        stop: event.currentTarget.dataset.id
+      }
+    });
+    wx.startPullDownRefresh();
   }
 }));
