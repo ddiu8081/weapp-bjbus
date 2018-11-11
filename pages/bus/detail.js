@@ -63,7 +63,6 @@ create(store, ({
   fetchBusTime: function () {
     var that = this;
     // wx.showNavigationBarLoading();
-    console.log(that.data.thisBus);
     wx.pro.request({
       url: app.globalData.headUrl + '/btic/time',
       data: {
@@ -73,10 +72,26 @@ create(store, ({
     }).then(res => {
       console.log(res.data);
       if (res.data.success) {
-        var lineTime = res.data.bus
+        var lineTime = res.data.bus;
+        var allStopId = res.data.stopid;
         var buses_list = {};
+        var nearest = [{
+            nsn: -1,
+            srt: 999999999999
+          }, {
+            nsn: -1,
+            srt: 999999999999
+          }];
         for (var i = 0; i < lineTime.length; i++) {
           var thisBus = lineTime[i];
+          if (parseInt(thisBus.nsn) <= allStopId) {
+            if (thisBus.srt < nearest[0].srt) {
+              nearest[1] = nearest[0];
+              nearest[0] = thisBus;
+            } else if (thisBus.srt < nearest[1].srt) {
+              nearest[1] = thisBus;
+            }
+          }
           var suffix = thisBus.nsrt == -1 ? "" : "m";
           var stopId = thisBus.nsn + suffix;
           if (!buses_list[stopId]) {
@@ -84,11 +99,17 @@ create(store, ({
           }
           buses_list[stopId].push(thisBus);
         }
+        console.log(nearest);
+        that.store.data.thisBus.stop = allStopId;
+        // if (allStopId > 0) {
+        //   that.store.data.thisBus.stopName = that.data.lineDetail.stations[allStopId - 1].name;
+        // }
         that.update({
-          stop_id: res.data.stopid,
-          lineTime: lineTime,
-          buses_list: buses_list
+          stop_id: allStopId,
+          buses_list: buses_list,
+          nearest: nearest
         });
+        
         wx.stopPullDownRefresh();
       }
     });
@@ -133,7 +154,7 @@ create(store, ({
       })
     } else {
       wx.redirectTo({
-        url: 'detail?id=' + oppositeId + '&stop=1'
+        url: 'detail?id=' + oppositeId
       });
     }
   },
@@ -147,5 +168,20 @@ create(store, ({
       }
     });
     wx.startPullDownRefresh();
+  },
+  nearStop: function () {
+    var stop_id = this.data.stop_id;
+    var thisStop = this.data.lineDetail.stations[stop_id - 1];
+    this.update({
+      location: {
+        isSet: true,
+        lat: thisStop.latitude,
+        lng: thisStop.longitude,
+        address: thisStop.name + "附近"
+      }
+    })
+    wx.switchTab({
+      url: '../index/index',
+    });
   }
 }));

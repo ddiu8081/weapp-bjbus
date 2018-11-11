@@ -1,3 +1,6 @@
+.bus-list {
+  margin-top: 32rpx;
+}
 .bus-item {
-  margin: 16rpx 20rpx;
+  margin: 16rpx 40rpx;
 }

@@ -1,9 +1,13 @@
-// pages/stop/detail.js
+import store from '../../store'
+import create from '../../libs/store/create'
+
+var app = getApp();
 var timer;
 
-Page({
+create(store, ({
   data: {
     options: [],
+    buslist: [],
     first_buses: {},
     swiper_current: 0,
     buses_count: 0
@@ -14,65 +18,50 @@ Page({
     this.setData({
       options: options
     });
+    this.fetchStopDetail(this.data.options);
     // wx.setNavigationBarTitle({
     //   title: options.name
     // });
   },
-  onReady: function () {
-
-  },
   onShow: function () {
-    this.fetchStopDetail(this.data.options);
+    console.log(this.data.buslist);
   },
   onHide: function () {
     console.log("stop - on hide");
-    clearTimeout(timer);
   },
   onPullDownRefresh: function () {
-    this.fetchPageDetail(this.data.swiper_current);
-  },
-  loadPage: function (event) {
-    this.setData({
-      swiper_current: event.detail.current,
-    })
-    this.fetchPageDetail(event.detail.current);
+    this.fetchPageDetail();
   },
   fetchStopDetail: function (options) {
     var that = this;
     wx.showNavigationBarLoading();
-    var first_buses_array = options.buses.split(",");
-    console.log(first_buses_array);
-    var buses_count = first_buses_array.length;
-    var buses_page = parseInt((buses_count - 1) / 5) + 1;
-    var first_buses = new Array();
-    for (var i = 0; i < buses_page; i++) {
-      var left = i == (buses_page - 1) ? buses_count - 5 * i : 5;
-      first_buses[i] = new Array();
-      for (var j = 0; j < left; j++) {
-        first_buses[i][j] = {};
-        first_buses[i][j]['name'] = first_buses_array[i * 5 + j];
-      }
+    var busArr = options.buses.split(",");
+    var busList = [];
+    for (var i = 0; i < busArr.length; i++) {
+      busList.push({
+        name: busArr[i],
+        stop: options.name
+      });
     }
+    console.log(busList)
     that.setData({
-      swiper_current: 0,
-      first_buses: first_buses,
-      buses_count: buses_count
+      buslist: busList
     })
     wx.startPullDownRefresh();
   },
-  fetchPageDetail: function (page) {
+  fetchPageDetail: function () {
     var that = this;
-    var buses_detail = that.data.first_buses[page];
-    for (var i = 0; i < buses_detail.length; i++) {
-      var dir = buses_detail[i].dir ? buses_detail[i].dir : '';
-      that.fetchBusDetail(buses_detail[i].name, dir, that.data.options.name, page, i);
-    }
+    // var buses_detail = that.data.first_buses[page];
+    // for (var i = 0; i < buses_detail.length; i++) {
+    //   var dir = buses_detail[i].dir ? buses_detail[i].dir : '';
+    //   that.fetchBusDetail(buses_detail[i].name, dir, that.data.options.name, page, i);
+    // }
     
-    clearTimeout(timer);
-    timer = setTimeout(function () {
-      that.fetchPageDetail(that.data.swiper_current);
-      console.log(new Date());
-    }, 8000);
+    // clearTimeout(timer);
+    // timer = setTimeout(function () {
+    //   that.fetchPageDetail(that.data.swiper_current);
+    //   console.log(new Date());
+    // }, 8000);
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
   },
@@ -133,4 +122,4 @@ Page({
       })
     }
   }
-})
+}));

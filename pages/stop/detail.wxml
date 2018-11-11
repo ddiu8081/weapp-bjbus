@@ -1,80 +1,12 @@
-<!--pages/stop/detail.wxml-->
 <view class="info-bar">
   <!-- <image class="location-pic" src="http://api.map.baidu.com/staticimage/v2?ak=8apGt7pBDKC44iShsHzwKGT2x8dBq14y&center={{index.getMapCenter(options.location)}}&markers={{options.location}}&width=800&height=800&zoom=18&coordtype=gcj02ll&copyright=1&dpiType=ph" mode="aspectFill"></image> -->
   <!-- <image class="location-pic" src="https://restapi.amap.com/v3/staticmap?location={{options.location}}&traffic=1&zoom=16&size=750*400&markers=large,,:{{options.location}}&key=35d1aca7ac6e921b16f5d3dcb3bad29b" mode="aspectFill"></image> -->
   <view class="info">
     <span class="stop-name">{{options.name}}</span>
-    <span class="stop-meta">{{options.location}}</span>
+    <span class="stop-meta">{{buslist.length}}条线路</span>
   </view>
   <image bindtap="showMap" class="icon" src="/res/icon/map.png"></image>
 </view>
 <view class="container">
-  <view bindtap="showMap" class="location-mask"></view>
-  <view class="stop-card stop-detail-card">
-    <view class="stop-card-content stop-card-content-first">
-      <swiper current="{{swiper_current}}" bindchange="loadPage" indicator-dots circular indicator-color="rgba(0, 0, 0, .05)" indicator-active-color="rgba(0, 0, 0, .15)" style="height: {{index.getHeight(buses_count)}}rpx">
-        <swiper-item wx:for="{{first_buses}}" wx:for-index="busList_index" wx:for-item="busList_item" wx:key="busList_index">
-          <view wx:for="{{busList_item}}" wx:for-index="bus_index" wx:for-item="bus_item" wx:key="name">
-            <navigator class="bus-item-detail" url="../bus/detail?name={{bus_item.name}}&direction={{bus_item.detail.dir.id}}&stop={{options.name}}" hover-stop-propagation="true" catchtap>
-              <view id="detail-left" class="businfo">
-                <view class="busname">
-                  {{bus_item.name}}
-                </view>
-                <view class="direction" wx:if="{{bus_item.detail.success}}">
-                  开往 {{bus_item.detail.dir.to}}
-                </view>
-              </view>
-              <view id="detail-right" class="bustime">
-                <view class="bustime-item bustime-item-1">
-                  <view class="poi {{index.getColor(bus_item.detail.first.poi)}}">{{bus_item.detail.first.poi}}</view>
-                  <view class="distance">{{bus_item.detail.first.distance}}</view>
-                </view>
-                <view class="bustime-item bustime-item-2" wx-if="{{bus_item.detail.second.poi}}">
-                  <view class="poi {{index.getColor(bus_item.detail.second.poi)}}">{{bus_item.detail.second.poi}}</view>
-                  <view class="distance">{{bus_item.detail.second.distance}}</view>
-                </view>
-                <view class="bustime-item bustime-item-3" id="{{bus_item.name}}" data-success="{{bus_item.detail.success}}" data-page="{{busList_index}}" data-index="{{bus_index}}" data-opposite="{{bus_item.detail.dir.opposite}}" catchtap="getOpposite">
-                  <i-icon type="refresh" size="20" color="#bbbec4" i-class="icon-load" wx:if="{{bus_item.refresh}}"></i-icon>
-                  <block wx:else>
-                    <i-icon type="close" size="20" color="#bbbec4" wx:if="{{!bus_item.detail.success}}"></i-icon>
-                    <i-icon type="undo" size="20" color="#bbbec4" wx:else ></i-icon>
-                  </block>
-                      
-                </view>
-              </view>
-            </navigator>
-          </view>
-        </swiper-item>
-      </swiper>
-    </view>
-  </view>
+  <bus-item-list buslist="{{ buslist }}"></bus-item-list>
 </view>
-
-<wxs module="index">
-  var getColor = function (str) {
-    if (str == "单向停靠" || str == "未开通" || str == "无数据" || str == "未发车") {
-      return "poi-disabled";
-    } else if (str == "即将到站") {
-      return "poi-green";
-    } else if (str == "已到站") {
-      return "poi-aqua";
-    } else {
-      return "poi-yellow";
-    }
-    return d;
-  };
-  var getHeight = function (count) {
-    return count > 5 ? 650 : count * 130;
-  }
-  var getMapCenter = function (location) {
-    if (location) {
-      var thisLoc = location.toString().split(',');
-      return thisLoc[0] + ',' + (parseFloat(thisLoc[1]) - 0.001);
-    }
-  }
-  module.exports = {
-    getColor: getColor,
-    getHeight: getHeight,
-    getMapCenter: getMapCenter
-  }
-</wxs>

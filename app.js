@@ -37,9 +37,11 @@ App({
         count: res.data.updateNum,
         lines: res.data.lines.line,
       }
+      store.data.hasfetchedBusList = true;
+      store.update();
     })
   },
-  getLineId: function (lineName) {
+  getLineByName: function (lineName) {
     var that = this;
     var count = that.globalData.busList.count;
     var busList = that.globalData.busList.lines;
@@ -62,7 +64,7 @@ App({
     return arr;
   },
   getOppositeId: function (lineName, thisId) {
-    var lineArr = this.getLineId(lineName);
+    var lineArr = this.getLineByName(lineName);
     if (lineArr.length == 1) {
       return "";
     } else {

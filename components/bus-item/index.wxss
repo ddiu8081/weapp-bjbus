@@ -4,28 +4,16 @@
   box-sizing: border-box;
   flex-wrap: nowrap;
   justify-content: space-between;
-  height: 144rpx;
+  height: 160rpx;
   align-items: center;
-  background-color: #f8f8f9;
-  border: 1px solid #eeeeee;
-  border-radius: 16rpx;
-  /* border-left: 2px solid #87d068; */
-}
-
-.bus-item-card .businfo {
-  margin-left: 20rpx;
-  height: 100%;
-  padding: 20rpx 0;
-  box-sizing: border-box;
+  background-color: #ffffff;
+  padding: 0 30rpx;
 }
 
 .bus-item-card .businfo .busname {
   display: inline-block;
-  color: #ffffff;
-  background-color: #74b9ff;
-  padding: 0rpx 10rpx;
-  border-radius: 8rpx;
-  margin-bottom: 6rpx;
+  font-size: 40rpx;
+  color: #303133;
 }
 
 .bus-item-card .businfo .direction {

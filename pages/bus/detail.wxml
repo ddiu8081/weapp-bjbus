@@ -1,10 +1,32 @@
 <!--pages/bus/detail.wxml-->
 <view class="container">
-  <bus-info-bar info="{{lineDetail}}"/>
+  <bus-info-bar info="{{lineDetail}}" stopid="{{stop_id}}"/>
   <view class="popover"></view>
   <view class="bustime-card">
     <view class="info">
-      <text class="toast">请选择候车站点</text>
+      <text wx:if="{{!stopSet}}" class="toast">请选择候车站点</text>
+      <block wx:else>
+        <view class="bustime-item">
+          <view class="title">第一辆车</view>
+          <block>
+            <view wx:if="{{nearest[0].sd == -1}}" class="time blue">已到站</view>
+            <view wx:if="{{!nearest[0].sd}}" class="time grey">未发车</view>
+            <view wx:if="{{nearest[0].sd > 0}}" class="time">{{detail.getTimeStr(nearest[0].srt)}}</view>
+          </block>
+          <view class="desc" wx:if="{{nearest[0].sd > 0}}">{{stop_id - nearest[0].nsn}}站 {{detail.getDistanceStr(nearest[0].sd)}}</view>
+          <view class="desc" wx:else>-</view>
+        </view>
+        <view class="bustime-item" wx:if="{{nearest[0].nsn > 0}}">
+          <view class="title">第二辆车</view>
+          <block>
+            <view wx:if="{{nearest[1].sd == -1}}" class="time blue">已到站</view>
+            <view wx:if="{{!nearest[1].sd}}" class="time grey">未发车</view>
+            <view wx:if="{{nearest[1].sd > 0}}" class="time">{{detail.getTimeStr(nearest[1].srt)}}</view>
+          </block>
+          <view class="desc" wx:if="{{nearest[1].sd > 0}}">{{stop_id - nearest[1].nsn}}站 {{detail.getDistanceStr(nearest[1].sd)}}</view>
+          <view class="desc" wx:else>-</view>
+        </view>
+      </block>
     </view>
     <view class="control">
       <view bindtap="changeDir" class="item">
@@ -15,9 +37,9 @@
         <image mode="aspectFit" src="/res/icon/earth.png"></image>
         <span>地图视图</span>
       </navigator>
-      <view class="item">
+      <view bindtap="nearStop" data-stopid="{{stop_id}}" class="item">
         <image mode="aspectFit" src="/res/icon/curvilinear.png"></image>
-        <span>同站线路</span>
+        <span>附近站点</span>
       </view>
     </view>
   </view>
@@ -51,14 +73,7 @@
           <view class="stop-item-name"></view> 
         </view>
       </view>
-    </view>
-
-    <!-- <view class="stop-item-outer" >
-      <view class="stop-item">
-        {{stop_item.id}} - 
-      </view>
-    </view> -->
-    
+    </view>   
   </scroll-view>
 </view>
 <wxs module="detail">
@@ -71,20 +86,23 @@
       return '';
     }
   };
-  var getColor = function (str) {
-    if (str == "单向停靠" || str == "未开通" || str == "无数据" || str == "未发车") {
-      return "poi-disabled";
-    } else if (str == "即将到站") {
-      return "poi-green";
-    } else if (str == "已到站") {
-      return "poi-aqua";
+  var getTimeStr = function (srt) {
+    if (srt <= 60) {
+      return srt + "秒";
     } else {
-      return "poi-yellow";
+      return Math.round(srt / 60) + "分钟";
     }
-    return d;
+  };
+  var getDistanceStr = function (sd) {
+    if (sd <= 1000) {
+      return sd + "m";
+    } else {
+      return Math.round(sd / 1000).toFixed(1) + "km";
+    }
   };
   module.exports = {
     getStopItemLineClass: getStopItemLineClass,
-    getColor: getColor
+    getTimeStr: getTimeStr,
+    getDistanceStr: getDistanceStr
   }
 </wxs>

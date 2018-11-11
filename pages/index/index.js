@@ -13,6 +13,7 @@ create(store, ({
     this.resetLocation();
   },
   onShow: function () {
+    this.initStopList();
   },
   onHide: function () {
     // clearTimeout(timer);

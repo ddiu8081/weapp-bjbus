@@ -1,5 +1,5 @@
 <!--pages/components/bus-item/bus-item.wxml-->
-<navigator class="bus-item-card i-class" url="../bus/detail?id={{busdata.id}}&stop={{busdata.stop}}" hover-stop-propagation="true" catchtap>
+<navigator class="bus-item-card i-class" url="/pages/bus/detail?id={{busdata.id}}&stop={{busdata.stop}}" hover-stop-propagation="true" catchtap>
   <view id="detail-left" class="businfo">
     <view class="busname">
       {{lineInfo.linename}}

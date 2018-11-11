@@ -15,12 +15,41 @@
   border-bottom: 1px solid #eeeeee;
   align-items: center;
   text-align: center;
+  padding: 0 32rpx;
 }
 
 .bustime-card .info .toast {
   flex: 1;
   font-size: 28rpx;
   color: #c0c4cc;
+}
+
+.bustime-card .info .bustime-item {
+  flex: 1;
+}
+
+.bustime-card .info .bustime-item .title {
+  color: #C0C4CC;
+  font-size: 22rpx;
+}
+
+.bustime-card .info .bustime-item .time {
+  color: #67C23A;
+  font-size: 42rpx;
+  margin: 12rpx 0 8rpx;
+}
+
+.bustime-card .info .bustime-item .time.blue {
+  color: #409EFF;
+}
+
+.bustime-card .info .bustime-item .time.grey {
+  color: #909399;
+}
+
+.bustime-card .info .bustime-item .desc {
+  color: #909399;
+  font-size: 22rpx;
 }
 
 .bustime-card .control {

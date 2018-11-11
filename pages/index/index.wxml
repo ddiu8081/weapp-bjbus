@@ -21,7 +21,7 @@
   </view>
 </view>
 
-<view wx:if="{{stopList.success}}" class="pt240">
+<view wx:if="{{hasfetchedBusList && stopList.success}}" class="pt240">
   <i-notice-bar icon="systemprompt" color="#80848f" loop closable wx:if="{{notice}}">
     {{notice}}
   </i-notice-bar>
