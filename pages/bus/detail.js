@@ -5,8 +5,12 @@ var app = getApp();
 
 var timer;
 create(store, ({
+  data: {
+    favList: []
+  },
   onLoad: function (options) {
     console.log(options);
+    var that = this;
     var stopSet = false;
     if (options.stop) {
       stopSet = true;
@@ -18,7 +22,15 @@ create(store, ({
         stop: options.stop
       }
     });
-    this.fetchBusDetail();
+    app.fetchLineDetail(options.id, function(data) {
+      if (data.success) {
+        that.setData({
+          lineDetail: data
+        });
+        wx.hideNavigationBarLoading();
+        // wx.startPullDownRefresh();
+      }
+    });
   },
   onShow: function () {
     var that = this;
@@ -40,25 +52,6 @@ create(store, ({
   // },
   onPullDownRefresh: function () {
     this.fetchBusTime();
-  },
-  fetchBusDetail: function () {
-    wx.showNavigationBarLoading();
-    var that = this;
-    wx.pro.request({
-      url: app.globalData.headUrl + '/btic/detail',
-      data: {
-        'lineid': that.data.thisBus.id
-      }
-    }).then(res => {
-      if (res.data.success) {
-        console.log(res.data);
-        that.setData({
-          lineDetail: res.data
-        });
-        wx.hideNavigationBarLoading();
-        // wx.startPullDownRefresh();
-      }
-    });
   },
   fetchBusTime: function () {
     var that = this;
@@ -109,40 +102,28 @@ create(store, ({
           buses_list: buses_list,
           nearest: nearest
         });
-        
+        that.getStar(that.data.thisBus.id, allStopId);
         wx.stopPullDownRefresh();
       }
     });
-    // wx.request({
-    //   url: 'https://api.ddiu.site/bjbus/time',
-    //   data: {
-    //     'line': options.name,
-    //     'dir': options.direction,
-    //     'stop': options.stop
-    //   },
-    //   success: function (res) {
-    //     console.log(res.data);
-
-    //     var buses_list = {};
-    //     for (var i = 0; i < res.data.buses.length; i++) {
-    //       var this_poi = res.data.buses[i].poi;
-    //       buses_list[this_poi] = true;
-    //     }
-    //     that.setData({
-    //       bus_detail: res.data,
-    //       buses_list: buses_list,
-    //       stopRight: res.data.first.poi != "单向停靠"
-    //     });
-    //     clearTimeout(timer);
-    //     timer = setTimeout(function () {
-    //       that.fetchBusDetail(that.data.options);
-    //       console.log(new Date());
-    //     }, 8000);
-
-    //     wx.hideNavigationBarLoading();
-    //     wx.stopPullDownRefresh();
-    //   }
-    // });
+  },
+  getStar: function (lineid, stopid) {
+    var favList = this.store.data.favList;
+    this.store.data.thisBus.fav = false;
+    for (var i = 0; i < favList.length; i++) {
+      var favItem = favList[i];
+      if (favItem.id == lineid && favItem.stop == stopid) {
+        this.store.data.thisBus.fav = true;
+      }
+    }
+    this.update();
+  },
+  addFav: function () {
+    var that = this;
+    this.store.addFav(this.data.thisBus.id, this.data.stop_id, function() {
+      that.store.data.thisBus.fav = true;
+    });
+    this.update();
   },
   changeDir: function () {
     var thisData = this.data.lineDetail;

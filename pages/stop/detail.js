@@ -8,9 +8,6 @@ create(store, ({
   data: {
     options: [],
     buslist: [],
-    first_buses: {},
-    swiper_current: 0,
-    buses_count: 0
   },
 
   onLoad: function (options) {
@@ -19,9 +16,6 @@ create(store, ({
       options: options
     });
     this.fetchStopDetail(this.data.options);
-    // wx.setNavigationBarTitle({
-    //   title: options.name
-    // });
   },
   onShow: function () {
     console.log(this.data.buslist);

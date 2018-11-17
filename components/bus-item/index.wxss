@@ -16,7 +16,7 @@
   color: #303133;
 }
 
-.bus-item-card .businfo .direction {
+.bus-item-card .businfo .desc {
   color: #bbbec4;
   font-size: 22rpx;
 }

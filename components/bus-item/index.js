@@ -20,35 +20,41 @@ create({
       var lineData = app.getLineByName(busData.name);
       if (lineData.length > 0) {
         busData.id = lineData[0].id;
+        app.fetchLineDetail(busData.id, function(data) {
+          var stopId = -1;
+          if (parseInt(busData.stop) == busData.stop) {
+            stopId = busData.stop;
+          } else {
+            stopId = app.getStopId(data.stations, busData.stop);
+          }
+          that.setData({
+            lineInfo: data,
+            stopId: stopId
+          });
+        });
+      } else {
+        that.setData({
+          lineInfo: null
+        });
       }
       that.setData({
         busdata: busData
-      })
+      });
     }
-    wx.pro.request({
-      url: app.globalData.headUrl + '/btic/detail',
-      data: {
-        'lineid': busData.id,
-      },
-    }).then(res => {
-      console.log(res.data);
-      that.setData({
-        lineInfo: res.data
-      })
-    });
-    // wx.pro.request({
-    //   url: app.globalData.headUrl + '/btic/time',
-    //   data: {
-    //     'lineid': busData.id,
-    //     'stop': busData.stop
-    //   },
-    // }).then(res => {
-    //   console.log(res.data);
-    //   that.setData({
-    //     lineTime: res.data
-    //   })
-    // });
   },
   methods: {
+    navigateToBusDetail: function () {
+      var busData = this.data.busdata;
+      if (busData.id) {
+        wx.navigateTo({
+          url: "/pages/bus/detail?id=" + this.data.busdata.id + "&stop=" + this.data.busdata.stop,
+        });
+      } else {
+        wx.showToast({
+          icon: "none",
+          title: "没有数据"
+        })
+      }
+    }
   }
 })

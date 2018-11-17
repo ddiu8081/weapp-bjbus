@@ -25,7 +25,7 @@
   <i-notice-bar icon="systemprompt" color="#80848f" loop closable wx:if="{{notice}}">
     {{notice}}
   </i-notice-bar>
-  <view class="stop-list-container">
+  <view wx:if="{{thisTab == 1}}" class="stop-list-container">
     <block wx:for="{{stopList.pois}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="name">
       <stop-item info="{{stop_item}}"></stop-item>
     </block>

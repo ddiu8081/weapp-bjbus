@@ -5,7 +5,10 @@
     <span class="line-dir">{{info.direction}}</span>
     <!-- <view>{{info.time}} {{info.ticket}}</view> -->
   </view>
-  <image class="icon" src="/res/line_star_fill.png"></image>
+  <block wx:if="{{showFav}}">
+    <image wx:if="{{thisBus.fav}}" class="icon" src="/res/line_star_fill.png"></image>
+    <image wx:else bindtap="addFav" class="icon" src="/res/line_star.png"></image>
+  </block>
 </view>
 <view class="meta-bar">
   {{info.time}} {{info.ticket}}

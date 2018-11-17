@@ -7,20 +7,15 @@ export default {
       lng: 0,
       address: "我的位置"
     },
-    favList: [
-      {
-        id: 362,
-        stop: 10
-      },
-      {
-        id: 634,
-        stop: 17
-      }
-    ],
+    favList: [],
     hasLoaded: false,
     stopList: {},
     nearBusArray: [],
-    thisBus: {},
+    thisBus: {
+      id: null,
+      stop: null,
+      fav: false
+    },
     lastSeen: [],
   },
   resetLoc: function (callback) {
@@ -30,15 +25,30 @@ export default {
       altitude: false,
       success: function (res) {
         console.log(res);
-        that.data.location = {
+        var locData = {
           isSet: false,
           lat: res.latitude,
           lng: res.longitude,
           address: "我的位置"
-        }
+        };
+        that.data.location = locData;
         that.update();
-        callback();
+        callback(locData);
       }
     });
+  },
+  addFav: function (lineid, stopid, callback) {
+    console.log(lineid);
+    console.log(stopid);
+    this.data.favList.push({
+      id: lineid,
+      stop: stopid
+    });
+    this.update();
+    wx.setStorage({
+      key: "favList",
+      data: this.data.favList
+    })
+    callback();
   }
 }

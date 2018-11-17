@@ -13,14 +13,14 @@ create(store, ({
     this.resetLocation();
   },
   onShow: function () {
-    this.initStopList();
   },
   onHide: function () {
     // clearTimeout(timer);
   },
   onPullDownRefresh: function () {
-    if (this.store.data.location.isSet) {
-      this.initStopList();
+    var storeData = this.store.data.location;
+    if (storeData.isSet) {
+      this.initStopList(storeData);
     } else {
       this.resetLocation();
     }
@@ -55,14 +55,14 @@ create(store, ({
   },
   resetLocation: function () {
     var that = this;
-    that.store.resetLoc(function () {
-      that.initStopList();
+    that.store.resetLoc(function (locData) {
+      that.initStopList(locData);
     });
   },
-  initStopList: function() {
+  initStopList: function(locData) {
     var that = this;
-    var latitude = that.store.data.location.lat; // 纬度
-    var longitude = that.store.data.location.lng; // 经度
+    var latitude = locData.lat; // 纬度
+    var longitude = locData.lng; // 经度
 
     wx.showNavigationBarLoading();
     wx.pro.request({
@@ -78,11 +78,9 @@ create(store, ({
         })
         return;
       }
-      var bus_array = res.data.pois[0].buses.data;
       that.update({
         hasLoaded: true,
         stopList: res.data,
-        nearBusArray: bus_array
       });
       // var count = bus_array.count;
       // var buses_page = parseInt((count - 1) / 5) + 1;

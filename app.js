@@ -38,8 +38,38 @@ App({
         lines: res.data.lines.line,
       }
       store.data.hasfetchedBusList = true;
+      this.initFavList();
       store.update();
     })
+  },
+  initFavList: function () {
+    var favList = wx.getStorageSync("favList");
+    if (favList) {
+      store.data.favList = favList;
+    }
+  },
+  fetchLineDetail: function (lineId, callback) {
+    wx.pro.request({
+      url: this.globalData.headUrl + '/btic/detail',
+      data: {
+        'lineid': lineId,
+      },
+    }).then(res => {
+      console.log(res.data);
+      callback(res.data);
+    });
+  },
+  fetchLineTime: function (lineId, stop, callback) {
+    wx.pro.request({
+      url: this.globalData.headUrl + '/btic/time',
+      data: {
+        'lineid': lineId,
+        'stop': stop
+      },
+    }).then(res => {
+      console.log(res.data);
+      callback(res.data);
+    });
   },
   getLineByName: function (lineName) {
     var that = this;
@@ -74,5 +104,14 @@ App({
         return lineArr[0].id;
       }
     }
+  },
+  getStopId: function (stations, stopName) {
+    for (var i = 0; i < stations.length; i++) {
+      var thisStation = stations[i];
+      if (thisStation.name == stopName) {
+        return thisStation.id;
+      }
+    }
+    return -1;
   }
 })

@@ -1,30 +1,24 @@
 <!--pages/components/bus-item/bus-item.wxml-->
-<navigator class="bus-item-card i-class" url="/pages/bus/detail?id={{busdata.id}}&stop={{busdata.stop}}" hover-stop-propagation="true" catchtap>
+<view bindtap="navigateToBusDetail" class="bus-item-card i-class">
   <view id="detail-left" class="businfo">
     <view class="busname">
-      {{lineInfo.linename}}
+      {{busdata.name}}
     </view>
-    <view class="direction">
-      {{lineInfo.direction}}
-    </view>
-    <view class="direction">
-      下一站 {{lineInfo.stations[busData.stop].name}}
-    </view>
+    <block  wx:if="{{lineInfo}}">
+      <view class="desc">{{lineInfo.direction}}</view>
+      <block wx:if="{{stopId > 0}}">
+        <view class="desc" wx:if="{{stopId == lineInfo.stations.length}}">终点站</view>
+        <view class="desc" wx:else>下一站 {{lineInfo.stations[stopId].name}}</view>
+      </block>
+      <view class="desc" wx:else>下一站 -</view>
+    </block>
   </view>
   <view id="detail-right" class="bustime">
     <view class="bustime-item bustime-item-1">
-      <view class="poi">{{lineTime.detail.first.poi}}</view>
+      <block wx:if="{{lineInfo}}">
+      </block>
+      <view wx:else class="poi">无数据</view>
       <view class="distance">{{busData.detail.first.distance}}</view>
     </view>
-    <view class="bustime-item bustime-item-2" wx-if="{{busData.detail.second.poi}}">
-      <view class="poi {{index.getColor(busData.detail.second.poi)}}">{{busData.detail.second.poi}}</view>
-      <view class="distance">{{busData.detail.second.distance}}</view>
-    </view>
-    <view class="bustime-item bustime-item-3" id="{{busData.name}}" data-success="{{busData.detail.success}}"
-      data-page="{{busList_index}}" data-index="{{bus_index}}" data-opposite="{{busData.detail.dir.opposite}}"
-      catchtap="getOpposite" wx:if="{{busData.detail.success}}">
-      <i-icon type="refresh" size="20" color="#bbbec4" i-class="icon-load" wx:if="{{busData.refresh}}"></i-icon>
-      <image class="icon" src="/res/change.png" wx:else></image>
-    </view>
   </view>
-</navigator>
+</view>
