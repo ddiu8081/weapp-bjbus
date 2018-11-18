@@ -51,30 +51,19 @@ create(store, ({
   //   clearTimeout(timer);
   // },
   onPullDownRefresh: function () {
-    this.fetchBusTime();
-  },
-  fetchBusTime: function () {
     var that = this;
-    // wx.showNavigationBarLoading();
-    wx.pro.request({
-      url: app.globalData.headUrl + '/btic/time',
-      data: {
-        'lineid': that.data.thisBus.id,
-        'stop': that.data.thisBus.stop
-      },
-    }).then(res => {
-      console.log(res.data);
-      if (res.data.success) {
-        var lineTime = res.data.bus;
-        var allStopId = res.data.stopid;
+    app.fetchLineTime(that.data.thisBus.id, that.data.thisBus.stop, function(data) {
+      if (data.success) {
+        var lineTime = data.bus;
+        var allStopId = data.stopid;
         var buses_list = {};
         var nearest = [{
-            nsn: -1,
-            srt: 999999999999
-          }, {
-            nsn: -1,
-            srt: 999999999999
-          }];
+          nsn: -1,
+          srt: 999999999999
+        }, {
+          nsn: -1,
+          srt: 999999999999
+        }];
         for (var i = 0; i < lineTime.length; i++) {
           var thisBus = lineTime[i];
           if (parseInt(thisBus.nsn) <= allStopId) {

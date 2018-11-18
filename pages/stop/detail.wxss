@@ -1,4 +1,8 @@
 /* pages/stop/detail.wxss */
+.container {
+  margin: 32rpx 40rpx 0%;
+}
+
 .info-bar {
   display: flex;
   height: 180rpx;

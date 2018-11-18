@@ -9,8 +9,6 @@ create({
     someData: {}
   },
   ready: function () {
-    console.log("haha");
-    console.log(this.data)
   },
   methods: {
     addFav: function () {

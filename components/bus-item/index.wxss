@@ -36,58 +36,19 @@
   text-align: right;
 }
 
-.bus-item-card .bustime .bustime-item-2 {
-  margin-left: 20rpx;
-  padding-left: 20rpx;
-  border-left: 1rpx solid hsla(220,4%,58%,.2);
-  opacity: .5;
-}
-
-.bus-item-card .bustime .bustime-item-3 {
-  position: relative;
-  height: 100rpx;
-  display: flex;
-  align-items: center;
-  margin-left: 20rpx;
-  padding-right: 25rpx;
-  padding-left: 25rpx;
-  border-left: 1rpx solid hsla(220,4%,58%,.2);
-}
-
-.bus-item-card .bustime .bustime-item-3 .icon {
-  height: 36rpx;
-  width: 36rpx;
-}
-
-.bus-item-card .bustime .poi {
+.bus-item-card .bustime .bustime-item .poi {
   font-size: 32rpx;
+  color: #67C23A;
 }
 
-.bus-item-detail .bustime .poi-blue {
-  color: #6190e8;
+.bus-item-card .bustime .bustime-item .poi.blue {
+  color: #409EFF;
 }
 
-.bus-item-detail .bustime .poi-aqua {
-  color: #41cac0;
-}
-
-.bus-item-detail .bustime .poi-green {
-  color: #87d068;
-}
-
-.bus-item-detail .bustime .poi-yellow {
-  color: #E6A23C;
-}
-
-.bus-item-detail .bustime .poi-grey {
+.bus-item-card .bustime .bustime-item .poi.grey {
   color: #909399;
 }
 
-.bus-item-detail .bustime .poi-disabled {
-  color: #bbbec4;
-}
-
-.bus-item-card .bustime .distance {
-  color: #bbbec4;
-  font-size: 22rpx;
+.bus-item-card .bustime .bustime-item .poi.disabled {
+  color: #C0C1CC;
 }

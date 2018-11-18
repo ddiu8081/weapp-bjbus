@@ -30,6 +30,12 @@
       <stop-item info="{{stop_item}}"></stop-item>
     </block>
   </view>
+  <view wx:if="{{thisTab == 2}}" class="stop-list-container">
+    
+  </view>
+  <view wx:if="{{thisTab == 3}}" class="stop-list-container">
+    <bus-item-list buslist="{{ favList }}" show-stop="{{true}}"></bus-item-list>
+  </view>
 </view>
 <block wx:else>
   <func-page i-class="pt240" msg="{{stopList.errMsg}}" wx:if="{{stopList.errMsg}}"></func-page>

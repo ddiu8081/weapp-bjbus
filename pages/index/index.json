@@ -3,7 +3,7 @@
     "i-icon": "/dist/icon/index",
     "i-notice-bar": "/dist/notice-bar/index",
     "stop-item": "/components/stop-item/index",
-    "swiper-view": "/components/swiper-view/index",
+    "bus-item-list": "/components/bus-item-list/index",
     "func-page": "/components/func-page/index",
     "skeleton-page": "/components/skeleton-page/index"
   }

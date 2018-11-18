@@ -18,7 +18,6 @@ create(store, ({
     this.fetchStopDetail(this.data.options);
   },
   onShow: function () {
-    console.log(this.data.buslist);
   },
   onHide: function () {
     console.log("stop - on hide");
