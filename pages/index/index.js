@@ -10,15 +10,13 @@ create(store, ({
   onLoad: function () {
     var that = this;
     this.getNotice();
-    this.resetLocation();
+    // this.resetLocation();
   },
   onShow: function () {
     this.setData({
       thisTab: 1
-    })
-  },
-  onHide: function () {
-    // clearTimeout(timer);
+    });
+    wx.startPullDownRefresh();
   },
   onPullDownRefresh: function () {
     var storeData = this.store.data.location;
@@ -60,6 +58,7 @@ create(store, ({
     var that = this;
     that.store.resetLoc(function (locData) {
       that.initStopList(locData);
+      wx.stopPullDownRefresh();
     });
   },
   initStopList: function(locData) {
@@ -104,7 +103,7 @@ create(store, ({
       //   first_buses: first_buses
       // })
       wx.hideNavigationBarLoading();
-      // wx.startPullDownRefresh();
+      wx.stopPullDownRefresh();
     });
   },
   getOpposite: function (event) {
