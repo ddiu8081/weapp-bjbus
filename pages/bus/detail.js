@@ -11,12 +11,8 @@ create(store, ({
   onLoad: function (options) {
     console.log(options);
     var that = this;
-    var stopSet = false;
-    if (options.stop) {
-      stopSet = true;
-    }
     this.setData({
-      stopSet: stopSet,
+      stopSet: false,
       thisBus: {
         id: options.id,
         stop: options.stop
@@ -28,28 +24,13 @@ create(store, ({
           lineDetail: data
         });
         wx.hideNavigationBarLoading();
-        // wx.startPullDownRefresh();
       }
     });
   },
   onShow: function () {
     var that = this;
     wx.startPullDownRefresh();
-    wx.setStorage({
-      key: 'lastSeen',
-      data: that.store.data.thisBus,
-    })
   },
-  // onHide: function() {
-  //   var that = this;
-  //   clearTimeout(timer);
-  // },
-  // onUnload: function () {
-  //   var that = this;
-  //   console.log("bus - on unload");
-  //   console.log(that.data.bus_detail.desc);
-  //   clearTimeout(timer);
-  // },
   onPullDownRefresh: function () {
     var that = this;
     app.fetchLineTime(that.data.thisBus.id, that.data.thisBus.stop, function(data) {
@@ -82,11 +63,16 @@ create(store, ({
           buses_list[stopId].push(thisBus);
         }
         console.log(nearest);
-        that.store.data.thisBus.stop = allStopId;
         // if (allStopId > 0) {
         //   that.store.data.thisBus.stopName = that.data.lineDetail.stations[allStopId - 1].name;
         // }
-        that.update({
+        var stopSet = false;
+        if (allStopId > 0) {
+          stopSet = true;
+        }
+        console.log("stopSet:" + stopSet);
+        that.setData({
+          stopSet: stopSet,
           stop_id: allStopId,
           buses_list: buses_list,
           nearest: nearest
@@ -103,6 +89,7 @@ create(store, ({
       var favItem = favList[i];
       if (favItem.id == lineid && favItem.stop == stopid) {
         this.store.data.thisBus.fav = true;
+        this.store.data.thisBus.fav_index = i;
       }
     }
     this.update();
@@ -111,8 +98,15 @@ create(store, ({
     var that = this;
     this.store.addFav(this.data.thisBus.id, this.data.stop_id, function() {
       that.store.data.thisBus.fav = true;
+      that.update();
     });
-    this.update();
+  },
+  removeFav: function () {
+    var that = this;
+    this.store.removeFav(this.store.data.thisBus.fav_index, function () {
+      that.store.data.thisBus.fav = false;
+      that.update();
+    });
   },
   changeDir: function () {
     var thisData = this.data.lineDetail;
@@ -124,7 +118,7 @@ create(store, ({
       })
     } else {
       wx.redirectTo({
-        url: 'detail?id=' + oppositeId
+        url: 'detail?id=' + oppositeId + '&stop=' + this.data.thisBus.stop
       });
     }
   },
@@ -134,7 +128,7 @@ create(store, ({
       stopSet: true,
       thisBus: {
         id: that.data.thisBus.id,
-        stop: event.currentTarget.dataset.id
+        stop: event.currentTarget.dataset.name
       }
     });
     wx.startPullDownRefresh();

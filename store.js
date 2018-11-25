@@ -38,12 +38,19 @@ export default {
     });
   },
   addFav: function (lineid, stopid, callback) {
-    console.log(lineid);
-    console.log(stopid);
     this.data.favList.push({
       id: lineid,
       stop: stopid
     });
+    this.update();
+    wx.setStorage({
+      key: "favList",
+      data: this.data.favList
+    })
+    callback();
+  },
+  removeFav: function (index, callback) {
+    this.data.favList.splice(index, 1);
     this.update();
     wx.setStorage({
       key: "favList",

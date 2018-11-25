@@ -18,6 +18,15 @@ create({
     // }, 8000);
   },
   methods: {
-    
+    freshAll: function (callback) {
+      var busItems = this.selectAllComponents("#bus-item");
+      busItems.forEach((busItem) => {
+        console.log(busItem);
+        busItem.fetchLineTime();
+      })
+      if (callback) {
+        callback();
+      }
+    }
   }
 })

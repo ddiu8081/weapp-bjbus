@@ -6,7 +6,7 @@
     <!-- <view>{{info.time}} {{info.ticket}}</view> -->
   </view>
   <block wx:if="{{showFav}}">
-    <image wx:if="{{thisBus.fav}}" class="icon" src="/res/line_star_fill.png"></image>
+    <image wx:if="{{thisBus.fav}}" bindtap="removeFav" class="icon" src="/res/line_star_fill.png"></image>
     <image wx:else bindtap="addFav" class="icon" src="/res/line_star.png"></image>
   </block>
 </view>

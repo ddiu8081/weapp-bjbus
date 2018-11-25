@@ -13,6 +13,9 @@ create(store, ({
     this.resetLocation();
   },
   onShow: function () {
+    this.setData({
+      thisTab: 1
+    })
   },
   onHide: function () {
     // clearTimeout(timer);

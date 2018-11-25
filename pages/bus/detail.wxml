@@ -63,7 +63,7 @@
           </view>
           <view class="stop-name-item stop {{(stopSet && stop_item.id == stop_id) ? 'this-stop' : ''}}">
             <!-- <view class="stop-item-id">{{stop_item.id}}</view> -->
-            <view class="stop-item-name" bindtap="setStopId" data-id="{{stop_item.id}}">{{stop_item.name}}</view> 
+            <view class="stop-item-name" bindtap="setStopId" data-id="{{stop_item.id}}" data-name="{{stop_item.name}}">{{stop_item.name}}</view> 
           </view>
         </view>
       </block>

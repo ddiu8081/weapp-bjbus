@@ -8,5 +8,5 @@
   <image bindtap="showMap" class="icon" src="/res/icon/map.png"></image>
 </view>
 <view class="container">
-  <bus-item-list buslist="{{ buslist }}"></bus-item-list>
+  <bus-item-list id="buslist" buslist="{{ buslist }}"></bus-item-list>
 </view>

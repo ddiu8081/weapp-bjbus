@@ -13,6 +13,9 @@ create({
   methods: {
     addFav: function () {
       this.triggerEvent('addFav', {}, {});
+    },
+    removeFav: function () {
+      this.triggerEvent('removeFav', {}, {});
     }
   }
 })

@@ -43,6 +43,27 @@ create({
         lineInfo: data,
         stopId: stopId
       });
+      that.fetchLineTime();
+    });
+  },
+  methods: {
+    navigateToBusDetail: function () {
+      var busData = this.data.busdata;
+      if (busData.id) {
+        wx.navigateTo({
+          url: "/pages/bus/detail?id=" + busData.id + "&stop=" + busData.stop,
+        });
+      } else {
+        wx.showToast({
+          icon: "none",
+          title: "没有数据"
+        })
+      }
+    },
+    fetchLineTime: function () {
+      var that = this;
+      var stopId = this.data.stopId;
+      var busData = this.data.busdata;
       if (stopId > 0) {
         app.fetchLineTime(busData.id, stopId, function (data) {
           if (data.success) {
@@ -66,25 +87,6 @@ create({
         that.setData({
           load: true
         });
-      }
-    });
-  },
-  methods: {
-    navigateToBusDetail: function () {
-      var busData = this.data.busdata;
-      if (busData.id) {
-        var stopId = busData.stop;
-        if (stopId > 0) {
-          stopId = this.data.stopId;
-        }
-        wx.navigateTo({
-          url: "/pages/bus/detail?id=" + this.data.busdata.id + "&stop=" + stopId,
-        });
-      } else {
-        wx.showToast({
-          icon: "none",
-          title: "没有数据"
-        })
       }
     }
   }
