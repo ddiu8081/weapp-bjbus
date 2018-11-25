@@ -1,7 +1,9 @@
-// pages/bus/map.js
+import store from '../../store'
+import create from '../../libs/store/create'
+
 var app = getApp();
 
-Page({
+create(store, ({
   data: {
     lineData: [],
     markers: [],
@@ -123,4 +125,4 @@ Page({
       wx.hideNavigationBarLoading();
     });
   }
-})
+}))

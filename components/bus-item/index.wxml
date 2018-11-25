@@ -18,8 +18,8 @@
       </block>
     </block>
   </view>
-  <view wx:if="{{load}}" id="detail-right" class="bustime">
-    <view class="bustime-item">
+  <view id="detail-right" class="bustime">
+    <view wx:if="{{load}}" class="bustime-item">
       <block wx:if="{{lineInfo}}">
         <view wx:if="{{stopId > 0 && nearest.sd == -1}}" class="poi blue">已到站</view>
         <view wx:if="{{stopId > 0 && !nearest.sd}}" class="poi grey">未发车</view>
@@ -29,6 +29,7 @@
       <view wx:else class="poi disabled">无数据</view>
       <!-- <view class="distance">{{busData.detail.first.distance}}</view> -->
     </view>
+    <image wx:if="{{!showStop && lineInfo}}" catchtap="changeDir" class="btn" mode="aspectFit" src="/res/icon/swap.png"></image>
   </view>
 </view>
 <wxs module="detail">

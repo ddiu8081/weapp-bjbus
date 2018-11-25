@@ -17,8 +17,5 @@ Page({
         });
       }
     })
-  },
-  onShareAppMessage: function () {
-
   }
 })

@@ -1,11 +1,7 @@
 // pages/my/more/changelog.js
 var app = getApp();
-var observer = require('../../../libs/observer').observer;
 
-Page(observer({
-  props: {
-    data: require('../../../stores/globalData').default,
-  },
+Page({
   data: {
     changeLog: []
   },
@@ -26,4 +22,4 @@ Page(observer({
       })
     })
   }
-}))
+})

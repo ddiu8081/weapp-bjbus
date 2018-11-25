@@ -55,7 +55,7 @@ App({
         'lineid': lineId,
       },
     }).then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       callback(res.data);
     });
   },
@@ -98,10 +98,10 @@ App({
     if (lineArr.length == 1) {
       return "";
     } else {
-      if (lineArr[0].id == thisId) {
-        return lineArr[1].id;
-      } else {
+      if (lineArr[1].id == thisId) {
         return lineArr[0].id;
+      } else {
+        return lineArr[1].id;
       }
     }
   },

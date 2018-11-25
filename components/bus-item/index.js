@@ -6,6 +6,7 @@ create({
   pure: true,
   externalClasses: ['i-class'],
   properties: {
+    index: Number,
     busdata: Object,
     showStop: Boolean
   },
@@ -15,40 +16,12 @@ create({
     lineTime: {}
   },
   attached: function() {
-    var that = this;
-    var busData = this.data.busdata;
-    console.log(busData);
-    if (!busData.id) {
-      var lineData = app.getLineByName(busData.name);
-      if (lineData.length > 0) {
-        busData.id = lineData[0].id;
-      } else {
-        that.setData({
-          load: true,
-          lineInfo: null
-        });
-        return;
-      }
-    }
-    app.fetchLineDetail(busData.id, function (data) {
-      var stopId = -1;
-      busData.name = data.linename;
-      if (parseInt(busData.stop) == busData.stop) {
-        stopId = busData.stop;
-      } else {
-        stopId = app.getStopId(data.stations, busData.stop);
-      }
-      that.setData({
-        busdata: busData,
-        lineInfo: data,
-        stopId: stopId
-      });
-      that.fetchLineTime();
-    });
+    this.fetchLineDetail();
   },
   methods: {
     navigateToBusDetail: function () {
       var busData = this.data.busdata;
+      console.log(busData);
       if (busData.id) {
         wx.navigateTo({
           url: "/pages/bus/detail?id=" + busData.id + "&stop=" + busData.stop,
@@ -59,6 +32,40 @@ create({
           title: "没有数据"
         })
       }
+    },
+    changeDir: function () {
+      this.triggerEvent('changeDir', { index: this.data.index, thisId: this.data.busdata.id }, {});
+    },
+    fetchLineDetail: function () {
+      var that = this;
+      var busData = this.data.busdata;
+      if (!busData.id) {
+        var lineData = app.getLineByName(busData.name);
+        if (lineData.length > 0) {
+          busData.id = lineData[0].id;
+        } else {
+          that.setData({
+            load: true,
+            lineInfo: null
+          });
+          return;
+        }
+      }
+      app.fetchLineDetail(busData.id, function (data) {
+        var stopId = -1;
+        busData.name = data.linename;
+        if (parseInt(busData.stop) == busData.stop) {
+          stopId = busData.stop;
+        } else {
+          stopId = app.getStopId(data.stations, busData.stop);
+        }
+        that.setData({
+          busdata: busData,
+          lineInfo: data,
+          stopId: stopId
+        });
+        that.fetchLineTime();
+      });
     },
     fetchLineTime: function () {
       var that = this;

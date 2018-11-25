@@ -8,6 +8,7 @@
   align-items: center;
   background-color: #ffffff;
   padding: 0 30rpx;
+  box-shadow: 0 3rpx 5rpx hsla(220,4%,58%,.1);
 }
 
 .bus-item-card .businfo .busname {
@@ -51,4 +52,14 @@
 
 .bus-item-card .bustime .bustime-item .poi.disabled {
   color: #C0C1CC;
+}
+
+.bus-item-card .bustime .btn {
+  width: 70rpx;
+  height: 110rpx;
+  padding: 30rpx 0 30rpx 20rpx;
+  box-sizing: border-box;
+  border-left: 1px solid #eee;
+  margin-left: 20rpx;
+  opacity: 0.8
 }

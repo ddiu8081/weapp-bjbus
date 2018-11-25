@@ -81,7 +81,6 @@ create(store, ({
         if (allStopId > 0) {
           stopSet = true;
         }
-        console.log("stopSet:" + stopSet);
         that.setData({
           stopSet: stopSet,
           stop_id: allStopId,
