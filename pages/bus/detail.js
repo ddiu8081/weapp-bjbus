@@ -96,7 +96,7 @@ create(store, ({
   },
   addFav: function () {
     var that = this;
-    this.store.addFav(this.data.thisBus.id, this.data.stop_id, function() {
+    this.store.addFav(this.data.thisBus.id, this.data.lineDetail.linename, this.data.stop_id, function() {
       that.store.data.thisBus.fav = true;
       that.update();
     });

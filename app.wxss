@@ -52,6 +52,7 @@ page {
 
 .nav-bar {
   background: #ffffff;
+  display: flex;
   width: 750rpx;
   height: 96rpx;
   line-height: 96rpx;
@@ -62,7 +63,7 @@ page {
 
 .nav-bar .nav-bar-item {
   display: inline-block;
-  width: 170rpx;
+  flex: 1;
   height: 100%;
   text-align: center;
   font-size: 32rpx;

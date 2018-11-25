@@ -9,14 +9,11 @@ export default {
     },
     favList: [],
     hasLoaded: false,
-    stopList: {},
-    nearBusArray: [],
     thisBus: {
       id: null,
       stop: null,
       fav: false
     },
-    lastSeen: [],
   },
   resetLoc: function (callback) {
     var that = this;
@@ -37,9 +34,10 @@ export default {
       }
     });
   },
-  addFav: function (lineid, stopid, callback) {
+  addFav: function (lineid, linename, stopid, callback) {
     this.data.favList.push({
       id: lineid,
+      name: linename,
       stop: stopid
     });
     this.update();

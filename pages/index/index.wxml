@@ -16,8 +16,7 @@
   </view>
   <view class="nav-bar">
     <view bindtap="changeTab" data-index="1" class="nav-bar-item {{thisTab == 1 ? 'active' : ''}}">站点</view>
-    <view bindtap="changeTab" data-index="2" class="nav-bar-item {{thisTab == 2 ? 'active' : ''}}">历史</view>
-    <view bindtap="changeTab" data-index="3" class="nav-bar-item {{thisTab == 3 ? 'active' : ''}}">收藏</view>
+    <view bindtap="changeTab" data-index="2" class="nav-bar-item {{thisTab == 2 ? 'active' : ''}}">收藏</view>
   </view>
 </view>
 
@@ -31,9 +30,6 @@
     </block>
   </view>
   <view wx:if="{{thisTab == 2}}" class="stop-list-container">
-    
-  </view>
-  <view wx:if="{{thisTab == 3}}" class="stop-list-container">
     <bus-item-list buslist="{{ favList }}" show-stop="{{true}}"></bus-item-list>
   </view>
 </view>
