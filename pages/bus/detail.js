@@ -31,6 +31,17 @@ create(store, ({
     var that = this;
     wx.startPullDownRefresh();
   },
+  onShareAppMessage: function () {
+    var path = '/pages/bus/detail?id=' + this.data.thisBus.id
+    if (this.data.stopSet) {
+      path += '&stop=' + this.data.thisBus.stop
+    }
+    return {
+      title: '[' + this.data.lineDetail.linename + ']路实时公交 | 北京公交出行',
+      imageUrl: '/res/share_banner.png',
+      path: path
+    }
+  },
   onPullDownRefresh: function () {
     var that = this;
     app.fetchLineTime(that.data.thisBus.id, that.data.thisBus.stop, function(data) {
@@ -96,9 +107,19 @@ create(store, ({
   },
   addFav: function () {
     var that = this;
-    this.store.addFav(this.data.thisBus.id, this.data.lineDetail.linename, this.data.stop_id, function() {
-      that.store.data.thisBus.fav = true;
-      that.update();
+    this.store.addFav(this.data.thisBus.id, this.data.lineDetail.linename, this.data.stop_id, function (success, errMsg) {
+      if (success) {
+        that.store.data.thisBus.fav = true;
+        that.update();
+        wx.showToast({
+          title: "收藏成功"
+        })
+      } else {
+        wx.showToast({
+          title: errMsg,
+          icon: 'none'
+        })
+      }
     });
   },
   removeFav: function () {
@@ -106,6 +127,9 @@ create(store, ({
     this.store.removeFav(this.store.data.thisBus.fav_index, function () {
       that.store.data.thisBus.fav = false;
       that.update();
+      wx.showToast({
+        title: "已取消收藏"
+      })
     });
   },
   changeDir: function () {
@@ -115,7 +139,7 @@ create(store, ({
       wx.showToast({
         title: '本车单向运行',
         icon: 'none'
-      })
+      });
     } else {
       wx.redirectTo({
         url: 'detail?id=' + oppositeId + '&stop=' + this.data.thisBus.stop

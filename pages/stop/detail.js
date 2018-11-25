@@ -9,7 +9,6 @@ create(store, ({
     options: [],
     buslist: [],
   },
-
   onLoad: function (options) {
     console.log(options);
     this.setData({
@@ -20,8 +19,13 @@ create(store, ({
   onShow: function () {
     wx.startPullDownRefresh();
   },
+  onShareAppMessage: function () {
+    return {
+      title: '途径[' + this.data.options.name + ']的公交线路 | 北京公交出行',
+      imageUrl: '/res/share_banner.png',
+    }
+  },
   onHide: function () {
-    console.log("stop - on hide");
   },
   onPullDownRefresh: function () {
     this.fetchPageDetail();

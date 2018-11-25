@@ -35,17 +35,21 @@ export default {
     });
   },
   addFav: function (lineid, linename, stopid, callback) {
-    this.data.favList.push({
-      id: lineid,
-      name: linename,
-      stop: stopid
-    });
-    this.update();
-    wx.setStorage({
-      key: "favList",
-      data: this.data.favList
-    })
-    callback();
+    if (this.data.favList.length >= 10) {
+      callback(false, "最多收藏10条线路哦")
+    } else {
+      this.data.favList.push({
+        id: lineid,
+        name: linename,
+        stop: stopid
+      });
+      this.update();
+      wx.setStorage({
+        key: "favList",
+        data: this.data.favList
+      })
+      callback(true);
+    }
   },
   removeFav: function (index, callback) {
     this.data.favList.splice(index, 1);
