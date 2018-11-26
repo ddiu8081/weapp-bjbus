@@ -1,6 +1,6 @@
 <!--pages/bus/detail.wxml-->
 <view class="container">
-  <bus-info-bar info="{{lineDetail}}" show-fav="{{true}}" bind:addFav="addFav" bind:removeFav="removeFav"/>
+  <bus-info-bar info="{{lineDetail}}" show-fav="{{stopSet}}" bind:addFav="addFav" bind:removeFav="removeFav"/>
   <view class="popover"></view>
   <view class="bustime-card">
     <view class="info">
