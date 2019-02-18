@@ -20,17 +20,20 @@
   </view>
 </view>
 
-<view wx:if="{{hasfetchedBusList && stopList.success}}" class="pt240">
+<view wx:if="{{hasfetchedBusList}}" class="pt240">
   <i-notice-bar icon="systemprompt" color="#80848f" loop closable wx:if="{{notice}}">
     {{notice}}
   </i-notice-bar>
-  <view wx:if="{{thisTab == 1}}" class="stop-list-container">
-    <block wx:for="{{stopList.pois}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="name">
-      <stop-item info="{{stop_item}}"></stop-item>
-    </block>
-  </view>
+  <block wx:if="{{thisTab == 1}}">
+    <view wx:if="{{stopList.success}}" class="stop-list-container">
+      <block wx:for="{{stopList.pois}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="name">
+        <stop-item info="{{stop_item}}"></stop-item>
+      </block>
+    </view>
+    <skeleton-page i-class="pt240" wx:else></skeleton-page>
+  </block>
   <view wx:if="{{thisTab == 2}}" class="stop-list-container">
-    <bus-item-list buslist="{{ favList }}" show-stop="{{true}}"></bus-item-list>
+    <bus-item-list id="fav-list" buslist="{{ favList }}" show-stop="{{true}}"></bus-item-list>
   </view>
 </view>
 <block wx:else>

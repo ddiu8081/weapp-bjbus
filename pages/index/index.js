@@ -13,9 +13,9 @@ create(store, ({
     // this.resetLocation();
   },
   onShow: function () {
-    this.setData({
-      thisTab: 1
-    });
+    // this.setData({
+    //   thisTab: 1
+    // });
     wx.startPullDownRefresh();
   },
   onPullDownRefresh: function () {
@@ -24,6 +24,10 @@ create(store, ({
       this.initStopList(storeData);
     } else {
       this.resetLocation();
+    }
+    if (this.data.thisTab == 2) {
+      var favList = this.selectComponent("#fav-list");
+      favList.freshAll();
     }
   },
   onShareAppMessage: function () {
