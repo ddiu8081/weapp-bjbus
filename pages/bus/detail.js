@@ -59,6 +59,7 @@ create(store, ({
         for (var i = 0; i < lineTime.length; i++) {
           var thisBus = lineTime[i];
           if (parseInt(thisBus.nsn) <= allStopId) {
+            // 当公交车所在的站id小于当前站id时，车还没到
             if (thisBus.srt < nearest[0].srt) {
               nearest[1] = nearest[0];
               nearest[0] = thisBus;

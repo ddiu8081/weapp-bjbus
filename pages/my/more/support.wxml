@@ -12,7 +12,7 @@
     <view class="h1">捐助项目</view>
     <text>您可以通过下方打赏按钮赞助该项目。</text>
     <view class="h1">广告支持</view>
-    <text>「北京公交出行」承诺：广告内容将只出现在本页面底部，您可以在本页上拉查看。如果刚好感兴趣，可以点击一下表示支持，谢谢。</text>
+    <text>「北京公交出行」承诺：广告内容不会出现在主功能页面，目前仅出现在本页面，您可以上拉查看，可以点击一下表示支持，谢谢。</text>
   </view>
   <view class="support-icons">
     <view class="support-icons-item">

@@ -44,5 +44,10 @@
         "selectedIconPath": "res/icon/tab/manage_fill.png"
       }
     ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于获取周边公交站点"
+    }
   }
 }
