@@ -28,7 +28,7 @@ Page({
   },
   showSubwayMap: function () {
     wx.previewImage({
-      urls: ["https://www.bjsubway.com/subway/images/subway_map.jpg"]
+      urls: ["http://www.bjsubway.com/subway/images/subway_map.jpg"]
     });
   }
 })
