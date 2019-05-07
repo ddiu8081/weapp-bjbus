@@ -49,6 +49,9 @@ create(store, ({
     });
   },
   changeTab: function (event) {
+    app.aldstat.sendEvent('index_change_tab', {
+      index: event.currentTarget.dataset.index
+    })
     this.setData({
       thisTab: event.currentTarget.dataset.index
     })

@@ -12,6 +12,8 @@ create(store, ({
     }]
   },
   onLoad: function (options) {
+    console.log(app.aldstat)
+    app.aldstat.sendEvent('search_page_open', this.store.data.location)
     console.log(this.store.data.thisBus)
   },
   onShow: function () {

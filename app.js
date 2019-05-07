@@ -1,4 +1,5 @@
 //app.js
+const ald = require('./utils/ald-stat.js')
 import './libs/wxPromise.min.js'
 import store from './store'
 

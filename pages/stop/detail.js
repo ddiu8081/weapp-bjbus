@@ -10,6 +10,7 @@ create(store, ({
     buslist: [],
   },
   onLoad: function (options) {
+    app.aldstat.sendEvent('stop_detail_page_open', options)
     console.log(options);
     this.setData({
       options: options

@@ -23,6 +23,7 @@ create({
       var busData = this.data.busdata;
       console.log(busData);
       if (busData.id) {
+        app.aldstat.sendEvent('goto_bus_detail', busData)
         wx.navigateTo({
           url: "/pages/bus/detail?id=" + busData.id + "&stop=" + busData.stop,
         });
