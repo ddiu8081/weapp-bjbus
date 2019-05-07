@@ -9,6 +9,7 @@ export default {
     },
     favList: [],
     hasLoaded: false,
+    hasfetchedBusList: false,
     thisBus: {
       id: null,
       stop: null,

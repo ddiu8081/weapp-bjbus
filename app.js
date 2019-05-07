@@ -7,7 +7,11 @@ App({
   globalData: {
     headUrl: 'https://api.ddiu.site',
     // headUrl: 'http://localhost:8000',
-    userId: ''
+    userId: '',
+    busList: {
+      count: 0,
+      lines: []
+    }
   },
   onLaunch: function () {
     // this.login();

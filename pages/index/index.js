@@ -57,9 +57,17 @@ create(store, ({
     })
   },
   navToSearch: function () {
-    wx.navigateTo({
-      url: 'search'
-    });
+    if (!store.data.hasfetchedBusList) {
+      wx.showToast({
+        title: '线路信息还在加载...',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      wx.navigateTo({
+        url: 'search'
+      });
+    }
   },
   resetLocation: function () {
     var that = this;

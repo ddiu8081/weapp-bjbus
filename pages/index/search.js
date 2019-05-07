@@ -38,6 +38,7 @@ create(store, ({
   handleInput: function (event) {
     var str = event.detail.value.toUpperCase();
     if (str.length > 0) {
+      app.aldstat.sendEvent('search_type', str)
       this.search(str);
     } else {
       this.setData({

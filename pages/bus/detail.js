@@ -9,6 +9,7 @@ create(store, ({
     favList: []
   },
   onLoad: function (options) {
+    app.aldstat.sendEvent('bus_detail_page_open', options)
     console.log(options);
     var that = this;
     this.setData({
