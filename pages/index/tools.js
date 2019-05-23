@@ -27,6 +27,8 @@ Page({
     })
   },
   showSubwayMap: function () {
+    var systemInfo = wx.getSystemInfoSync();
+    app.aldstat.sendEvent('show_subway_map', systemInfo);
     wx.previewImage({
       urls: ["http://www.bjsubway.com/subway/images/subway_map.jpg"]
     });

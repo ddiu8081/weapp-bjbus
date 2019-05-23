@@ -9,14 +9,21 @@ create(store, ({
     lastSeen1: [{
       line:1004,
       stop:10
-    }]
+    }],
+    locData: {}
   },
   onLoad: function (options) {
     console.log(app.aldstat)
     app.aldstat.sendEvent('search_page_open', this.store.data.location)
-    console.log(this.store.data.thisBus)
   },
   onShow: function () {
+    this.setData({
+      locData: {
+        lng: parseFloat(this.store.data.location.lng),
+        lat: parseFloat(this.store.data.location.lat),
+        address: this.store.data.location.address
+      },
+    });
   },
   setLocation: function () {
     var that = this;

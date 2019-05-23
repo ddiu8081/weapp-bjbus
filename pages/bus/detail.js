@@ -115,6 +115,7 @@ create(store, ({
         wx.showToast({
           title: "收藏成功"
         })
+        app.aldstat.sendEvent('bus_detail_add_fav', that.data.thisBus);
       } else {
         wx.showToast({
           title: errMsg,
@@ -131,10 +132,12 @@ create(store, ({
       wx.showToast({
         title: "已取消收藏"
       })
+      app.aldstat.sendEvent('bus_detail_remove_fav', that.data.thisBus);
     });
   },
   changeDir: function () {
     var thisData = this.data.lineDetail;
+    app.aldstat.sendEvent('bus_detail_change_dir', this.data.thisBus);
     var oppositeId = app.getOppositeId(thisData.linename, thisData.lineid);
     if (oppositeId == "") {
       wx.showToast({
@@ -156,6 +159,7 @@ create(store, ({
         stop: event.currentTarget.dataset.name
       }
     });
+    app.aldstat.sendEvent('bus_detail_add_fav', this.data.thisBus);
     wx.startPullDownRefresh();
   },
   nearStop: function () {
@@ -164,11 +168,12 @@ create(store, ({
     this.update({
       location: {
         isSet: true,
-        lat: thisStop.latitude,
-        lng: thisStop.longitude,
+        lat: parseFloat(thisStop.latitude),
+        lng: parseFloat(thisStop.longitude),
         address: thisStop.name + "附近"
       }
     })
+    app.aldstat.sendEvent('bus_detail_near_stop', this.data.thisBus);
     wx.switchTab({
       url: '../index/index',
     });

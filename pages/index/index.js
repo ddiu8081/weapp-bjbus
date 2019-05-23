@@ -19,7 +19,12 @@ create(store, ({
     wx.startPullDownRefresh();
   },
   onPullDownRefresh: function () {
-    var storeData = this.store.data.location;
+    var storeData = {
+      isSet: this.store.data.location.isSet,
+      lng: parseFloat(this.store.data.location.lng),
+      lat: parseFloat(this.store.data.location.lat),
+      address: this.store.data.location.address
+    };
     if (storeData.isSet) {
       this.initStopList(storeData);
     } else {

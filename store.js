@@ -3,8 +3,8 @@ export default {
     notice: '',
     location: {
       isSet: false,
-      lat: 0,
-      lng: 0,
+      lat: 116.397818,
+      lng: 39.907952,
       address: "我的位置"
     },
     favList: [],
@@ -26,8 +26,8 @@ export default {
           console.log(res);
           var locData = {
             isSet: false,
-            lat: res.latitude,
-            lng: res.longitude,
+            lat: parseFloat(res.latitude),
+            lng: parseFloat(res.longitude),
             address: "我的位置"
           };
           that.data.location = locData;

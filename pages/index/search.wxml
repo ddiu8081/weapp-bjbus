@@ -27,11 +27,11 @@
           <text>按位置搜索</text>
         </view>
         <view class="desc">
-          {{location.address}}
+          {{locData.address}}
         </view>
       </view>
       <view class="addon-card-body">
-        <image class="loc-img" src="http://api.map.baidu.com/staticimage/v2?ak=8apGt7pBDKC44iShsHzwKGT2x8dBq14y&center={{location.lng + ',' + location.lat}}&width=800&height=400&zoom=18&coordtype=gcj02ll&copyright=1&dpiType=ph" mode="aspectFill"></image>
+        <image class="loc-img" src="https://api.map.baidu.com/staticimage/v2?ak=8apGt7pBDKC44iShsHzwKGT2x8dBq14y&center={{locData.lng + ',' + locData.lat}}&width=800&height=400&zoom=18&coordtype=gcj02ll&copyright=1&dpiType=ph" mode="aspectFill"></image>
       </view>
     </view>
   </block>
