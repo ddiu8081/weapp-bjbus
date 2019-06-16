@@ -9,7 +9,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: app.globalData.headUrl + '/bjbus/app/changelog',
+      url: app.globalData.headUrl + '/app/changelog',
       success: function (res) {
         that.setData({
           update: res.data[0].date

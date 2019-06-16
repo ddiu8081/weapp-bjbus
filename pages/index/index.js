@@ -45,7 +45,7 @@ create(store, ({
   getNotice: function () {
     var that = this;
     wx.pro.request({
-      url: app.globalData.headUrl + '/bjbus/app/notice',
+      url: app.globalData.headUrl + '/app/notice',
     }).then(res => {
       console.log(res.data);
       that.update({
@@ -88,7 +88,7 @@ create(store, ({
 
     wx.showNavigationBarLoading();
     wx.pro.request({
-      url: app.globalData.headUrl + '/bjbus/around',
+      url: app.globalData.headUrl + '/around',
       data: {
         'location': longitude + ',' + latitude
       }

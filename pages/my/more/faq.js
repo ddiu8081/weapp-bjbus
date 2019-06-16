@@ -9,7 +9,7 @@ Page({
     var that = this;
     wx.showNavigationBarLoading();
     wx.request({
-      url: app.globalData.headUrl + '/bjbus/app/faq',
+      url: app.globalData.headUrl + '/app/faq',
       success: function (res) {
         wx.hideNavigationBarLoading();
         that.setData({

@@ -5,7 +5,7 @@ import store from './store'
 
 App({
   globalData: {
-    headUrl: 'https://api.ddiu.site',
+    headUrl: 'https://api.bjbus.ddiu.site/old',
     // headUrl: 'http://localhost:8000',
     userId: '',
     busList: {
@@ -35,7 +35,7 @@ App({
   // },
   initBusList: function () {
     wx.pro.request({
-      url: this.globalData.headUrl + '/btic/list'
+      url: this.globalData.headUrl + '/list'
     }).then(res => {
       console.log(res.data);
       this.globalData.busList = {
@@ -55,7 +55,7 @@ App({
   },
   fetchLineDetail: function (lineId, callback) {
     wx.pro.request({
-      url: this.globalData.headUrl + '/btic/detail',
+      url: this.globalData.headUrl + '/detail',
       data: {
         'lineid': lineId,
       },
@@ -66,7 +66,7 @@ App({
   },
   fetchLineTime: function (lineId, stop, callback) {
     wx.pro.request({
-      url: this.globalData.headUrl + '/btic/time',
+      url: this.globalData.headUrl + '/time',
       data: {
         'lineid': lineId,
         'stop': stop
