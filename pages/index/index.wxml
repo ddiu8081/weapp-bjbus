@@ -30,13 +30,13 @@
         <stop-item info="{{stop_item}}"></stop-item>
       </block>
     </view>
-    <skeleton-page i-class="pt240" wx:else></skeleton-page>
+    <func-page i-class="pt240" msg="{{stopList.errMsg}}" wx:if="{{!stopList.success && stopList.errMsg}}"></func-page>
+    <skeleton-page i-class="pt240" wx:if="{{!stopList.success && !stopList.errMsg}}"></skeleton-page>
   </block>
   <view wx:if="{{thisTab == 2}}" class="stop-list-container">
     <bus-item-list id="fav-list" buslist="{{ favList }}" show-stop="{{true}}"></bus-item-list>
   </view>
 </view>
-<block wx:else>
-  <func-page i-class="pt240" msg="{{stopList.errMsg}}" wx:if="{{stopList.errMsg}}"></func-page>
-  <skeleton-page i-class="pt240" wx:else></skeleton-page>
+<block wx:if="{{!hasfetchedBusList}}">
+  <skeleton-page i-class="pt240"></skeleton-page>
 </block>
