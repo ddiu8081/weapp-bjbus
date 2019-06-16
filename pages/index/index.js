@@ -98,6 +98,7 @@ create(store, ({
         that.update({
           stopList: res.data
         })
+        wx.hideNavigationBarLoading();
         return;
       }
       that.update({

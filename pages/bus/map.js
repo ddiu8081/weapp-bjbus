@@ -29,7 +29,7 @@ create(store, ({
     var that = this;
 
     wx.pro.request({
-      url: app.globalData.headUrl + '/btic/detail',
+      url: app.globalData.headUrl + '/detail',
       data: {
         'lineid': lineid,
         'map': '1'
@@ -58,7 +58,7 @@ create(store, ({
   initBusData(lineid, callback) {
     var that = this;
     wx.pro.request({
-      url: app.globalData.headUrl + '/btic/time',
+      url: app.globalData.headUrl + '/time',
       data: {
         'lineid': lineid,
         'stop': '10'
