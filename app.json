@@ -49,5 +49,6 @@
     "scope.userLocation": {
       "desc": "你的位置信息将用于获取周边公交站点"
     }
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

@@ -1,5 +1,5 @@
 <view class="bus-list">
-  <block wx:for="{{buslist}}" wx:for-index="bus_index" wx:for-item="bus_item" wx:key="name">
+  <view wx:for="{{buslist}}" wx:for-index="bus_index" wx:for-item="bus_item" wx:key="name">
     <bus-item id="bus-item" index="{{bus_index}}" busdata="{{bus_item}}" show-stop="{{showStop}}" bind:changeDir="changeDir" i-class="bus-item"></bus-item>
-  </block>
+  </view>
 </view>

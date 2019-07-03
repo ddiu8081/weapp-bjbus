@@ -9,7 +9,7 @@
       <block wx:if="{{showStop}}">
         <view class="desc">候车站 {{lineInfo.stations[stopId - 1].name}}</view>
       </block>
-      <block wx:else>
+      <block wx:if="{{!showStop}}">
         <block wx:if="{{stopId > 0}}">
         <view class="desc" wx:if="{{stopId == lineInfo.stations.length}}">终点站</view>
         <view class="desc" wx:else>下一站 {{lineInfo.stations[stopId].name}}</view>
@@ -26,7 +26,7 @@
         <view wx:if="{{stopId > 0 && nearest.sd > 0}}" class="poi">{{detail.getTimeStr(nearest.srt)}}</view>
         <view wx:if="{{stopId == -1}}" class="poi grey">单向停靠</view>
       </block>
-      <view wx:else class="poi disabled">无数据</view>
+      <view wx:if="{{!lineInfo}}" class="poi disabled">无数据</view>
       <!-- <view class="distance">{{busData.detail.first.distance}}</view> -->
     </view>
     <image wx:if="{{!showStop && lineInfo}}" catchtap="changeDir" class="btn" mode="aspectFit" src="/res/icon/swap.png"></image>

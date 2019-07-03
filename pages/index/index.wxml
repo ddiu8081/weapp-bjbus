@@ -9,7 +9,7 @@
           <span class="loc-text">{{location.address}}</span>
           <i-icon type="close" size="12" color="#A28D4E" style="margin-left:10rpx;"/>
         </span>
-        <text wx:else>输入线路进行搜索</text>
+        <text wx:if="{{!location.isSet}}">输入线路进行搜索</text>
       </view>
       <i-icon type="search" size="20" color="#80848f"/>
     </view>
@@ -24,19 +24,19 @@
   <i-notice-bar icon="systemprompt" color="#80848f" loop closable wx:if="{{notice}}">
     {{notice}}
   </i-notice-bar>
-  <block wx:if="{{thisTab == 1}}">
+  <view wx:if="{{thisTab == 1}}">
     <view wx:if="{{stopList.success}}" class="stop-list-container">
-      <block wx:for="{{stopList.pois}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="name">
+      <view wx:for="{{stopList.pois}}" wx:for-index="stop_index" wx:for-item="stop_item" wx:key="name">
         <stop-item info="{{stop_item}}"></stop-item>
-      </block>
+      </view>
     </view>
     <func-page i-class="pt240" msg="{{stopList.errMsg}}" wx:if="{{!stopList.success && stopList.errMsg}}"></func-page>
     <skeleton-page i-class="pt240" wx:if="{{!stopList.success && !stopList.errMsg}}"></skeleton-page>
-  </block>
+  </view>
   <view wx:if="{{thisTab == 2}}" class="stop-list-container">
     <bus-item-list id="fav-list" buslist="{{ favList }}" show-stop="{{true}}"></bus-item-list>
   </view>
 </view>
-<block wx:if="{{!hasfetchedBusList}}">
+<view wx:if="{{!hasfetchedBusList}}">
   <skeleton-page i-class="pt240"></skeleton-page>
-</block>
+</view>
