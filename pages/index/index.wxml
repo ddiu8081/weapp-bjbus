@@ -20,7 +20,7 @@
   </view>
 </view>
 
-<view wx:if="{{hasfetchedBusList}}" class="pt240">
+<view class="pt240">
   <i-notice-bar icon="systemprompt" color="#80848f" loop closable wx:if="{{notice}}">
     {{notice}}
   </i-notice-bar>
@@ -37,6 +37,6 @@
     <bus-item-list id="fav-list" buslist="{{ favList }}" show-stop="{{true}}"></bus-item-list>
   </view>
 </view>
-<view wx:if="{{!hasfetchedBusList}}">
+<!-- <view wx:if="{{!hasfetchedBusList}}">
   <skeleton-page i-class="pt240"></skeleton-page>
-</view>
+</view> -->

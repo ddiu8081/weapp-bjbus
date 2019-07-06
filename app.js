@@ -43,8 +43,8 @@ App({
         lines: res.data.lines.line,
       }
       store.data.hasfetchedBusList = true;
-      this.initFavList();
       store.update();
+      this.initFavList();
     })
   },
   initFavList: function () {

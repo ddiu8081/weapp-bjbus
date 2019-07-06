@@ -55,7 +55,8 @@ create({
       app.fetchLineDetail(busData.id, function (data) {
         var stopId = -1;
         busData.name = data.linename;
-        if (parseInt(busData.stop) == busData.stop) {
+        busData.stop = busData.stop.toString().replace('s##', '')
+        if (parseInt(busData.stop) > 0) {
           stopId = busData.stop;
         } else {
           stopId = app.getStopId(data.stations, busData.stop);
